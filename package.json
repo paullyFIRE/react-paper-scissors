@@ -1,0 +1,16 @@
+{
+  "name": "rps-server",
+  "version": "1.0.0",
+  "description": "RockPaperScissors API Server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Paul David Patterson <pddpatterson@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql": "^2.15.0"
+  }
+}
