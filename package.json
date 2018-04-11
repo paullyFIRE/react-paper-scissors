@@ -4,7 +4,6 @@
   "description": "RockPaperScissors API Server",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm dist/* && parcel build src/index.html",
     "update": "rm dist/* && parcel build src/index.html && node server.js",
     "publish": "surge dist/ threatening-insurance.surge.sh"
@@ -17,6 +16,7 @@
     "mysql": "^2.15.0"
   },
   "devDependencies": {
+    "parcel-bundler": "^1.7.0",
     "surge": "^0.20.1"
   }
 }
