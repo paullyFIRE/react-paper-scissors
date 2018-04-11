@@ -7,13 +7,39 @@ const { Database } = require('./database');
 const port = 3000;
 
 const db = new Database();
-
 const app = express();
 
 app.get('/api/games/', (req, res) => {
     let gameLog = db.getGames();
-    console.log(gameLog);
-    res.send('Hello, World!')
+    gameLog.then(resp => {
+        res.send(resp);
+        console.log(resp);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+});
+
+app.get('/api/players/', (req, res) => {
+    let gameLog = db.getPlayers();
+    gameLog.then(resp => {
+        res.send(resp);
+        console.log(resp);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+});
+
+app.post('/api/games/', (req, res) => {
+    let gameLog = db.postGame();
+    gameLog.then(resp => {
+        res.send(resp);
+        console.log(resp);
+    })
+    .catch(err => {
+        console.log(err);
+    })
 });
 
 app.get('/api/leaderboard/', (req, res) => {
