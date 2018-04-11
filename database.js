@@ -1,50 +1,35 @@
 const mysql = require('mysql');
 
-const connect = () => {
-    const connection = mysql.createConnection({
-        host: "35.184.253.121",
-        user: "root",
-        password: "Dawg0847178971@#$",
-        database: "rpc"
-    });
-
-    return connection;
-};
-
-const getGames = (con) => {
-    con.connect(err => {
-        if (err) throw err;
-
-        con.query(`SELECT * FROM Games;`, (err, response) => {
-            if (err) throw err;
-            return response;
+class Database {
+    constructor() {
+        this.pool = mysql.createPool({
+            host: "35.184.253.121",
+            user: "root",
+            password: "Dawg0847178971@#$",
+            database: "rpc"
         });
-    })
+    }
+
+    getGames() {
+        const query = `SELECT * FROM Games;`;
+        
+        return this.queryDatabase(query);
+    }
+
+    queryDatabase(queryStatement) {
+        this.pool.getConnection((err, con) => {
+            if (err) throw err;
+    
+            this.pool.query(queryStatement, (err, resp) => {
+                if (err) throw err;
+                console.log(resp);
+
+                this.pool.releaseConnection(con);
+
+                return resp;
+            });
+        })
+    }
 }
 
-module.exports = { connect, getGames };
-
-// const connect = () => {
-//     const connection = mysql.createConnection({
-//         host: "35.184.253.121",
-//         user: "root",
-//         password: "Dawg0847178971@#$",
-//         database: "rpc"
-//     });
-
-//     connection.connect(err => {
-//         if (err) throw err;
-//         console.log("Connected!");
-
-//         connection.query(`SELECT * FROM Games;`, (err, response) => {
-//             if (err) throw err;
-//             console.log(response)
-//         });
-//     })
-// };
-
-// const queryAllGames = () => {
-//     return null;
-// };
-
-// module.exports = { connect, queryAllGames }
+module.exports = { Database };

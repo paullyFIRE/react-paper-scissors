@@ -2,16 +2,17 @@
 
 const express = require('express');
 const mysql = require('mysql');
-const db = require('./database');
+const { Database } = require('./database');
 
 const port = 3000;
 
-connection = db.connect();
-let query = db.getGames(connection);
+const db = new Database();
 
 const app = express();
 
-app.get('/api/scores/', (req, res) => {
+app.get('/api/games/', (req, res) => {
+    let gameLog = db.getGames();
+    console.log(gameLog);
     res.send('Hello, World!')
 });
 
