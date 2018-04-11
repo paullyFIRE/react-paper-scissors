@@ -2,55 +2,44 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const { Database } = require('./database');
+const { Database } = require('./controllers/database');
+const path = require('path');
 
-const port = 3000;
+const port = 80;
 
 const db = new Database();
 const app = express();
 
 app.use(bodyParser.json());
 
-app.post('/api/player/auth', (req, res) => {
-    console.log(req.body);
-    /* 
-    Test for existing player by username and code
-    if username not present, create new entry, success
-    else auth code against username, success else failure
-    */
-
-    res.send({'success': 1});
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/index.html'))
 });
 
-app.get('/api/players/', (req, res) => {
-    let gameLog = db.getPlayers();
-    gameLog.then(resp => {
-        res.send(resp);
-        console.log(resp);
-    })
-    .catch(err => {
-        console.log(err);
-    })
+app.post('/games/post', (req, res) => {
+    const game = {
+        player: req.body.username,
+        roundsWin: req.body.roundsWin,
+        roundsLose: req.body.roundsLose,
+        roundsDraw: req.body.roundsDraw,
+        score: req.body.score
+    }
+
+    const query = db.postGame(game);
+    query.then(resp => res.send(resp))
+    .catch(err => res.send(err))
 });
 
-app.post('/api/games/', (req, res) => {
-    let gameLog = db.postGame();
-    gameLog.then(resp => {
-        res.send(resp);
-        console.log(resp);
-    })
-    .catch(err => {
-        console.log(err);
-    })
+app.get('/games/all', (req, res) => {
+    const query = db.getGames();
+    query.then(resp => res.send(resp))
+    .catch(err => res.send(err))
 });
 
-app.get('/api/leaderboard/', (req, res) => {
-    res.send(`We got ${req}`)
-});
-
-app.post('/api/player/', (req, res) => {
-    res.send('Hello, World!')
+app.get('/games/leaderboard', (req, res) => {
+    const query = db.getLeaderboard();
+    query.then(resp => res.send(resp))
+    .catch(err => res.send(err))
 });
 
 app.listen(port, () => console.log(`Basic server listening on port ${port}!`));

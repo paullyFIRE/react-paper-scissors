@@ -11,17 +11,16 @@ class Database {
         });
     }
 
-    postGame() {
-        const randomScore = Math.floor(Math.random()*100)*100;
-        return this.queryDatabase(queries.postGame(randomScore, "1"));
+    postGame(game) {
+        return this.queryDatabase(queries.postGame(game));
     }
 
     getGames() {
         return this.queryDatabase(queries.getGames);
     }
 
-    getPlayers() {
-        return this.queryDatabase(queries.getPlayers);
+    getLeaderboard() {
+        return this.queryDatabase(queries.getLeaderboard);
     }
 
     queryDatabase(queryStatement) {
