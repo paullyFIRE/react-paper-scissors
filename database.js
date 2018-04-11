@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const { queries } = require('./database-queries');
 
 class Database {
     constructor() {
@@ -12,31 +13,15 @@ class Database {
 
     postGame() {
         const randomScore = Math.floor(Math.random()*100)*100;
-        const query = `
-            INSERT INTO Games (GameID, Score, PlayerID, date)
-            VALUES (NULL, ${randomScore}, 1, CURRENT_TIMESTAMP);
-            `;
-
-        return this.queryDatabase(query);
+        return this.queryDatabase(queries.postGame(randomScore, "1"));
     }
 
     getGames() {
-        const query = `
-            SELECT * 
-            FROM Games
-            ORDER BY date DESC;
-            `;
-
-        return this.queryDatabase(query);
+        return this.queryDatabase(queries.getGames);
     }
 
     getPlayers() {
-        const query = `
-            SELECT * 
-            FROM Players
-            `;
-
-        return this.queryDatabase(query);
+        return this.queryDatabase(queries.getPlayers);
     }
 
     queryDatabase(queryStatement) {

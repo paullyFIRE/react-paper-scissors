@@ -10,6 +10,7 @@
   "author": "Paul David Patterson <pddpatterson@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mysql": "^2.15.0"
   }
