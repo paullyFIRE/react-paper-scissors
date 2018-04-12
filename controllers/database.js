@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const { queries } = require('./database-queries');
+const queries = require('./database-queries');
 
 class Database {
     constructor() {
@@ -39,4 +39,4 @@ class Database {
     }
 }
 
-module.exports = { Database };
+module.exports = Database;

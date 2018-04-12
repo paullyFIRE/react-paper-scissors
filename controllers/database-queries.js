@@ -1,4 +1,4 @@
-const queries = {
+exports.queries = {
     	postGame: (game) => {
             return (`
             INSERT INTO Games (gameID, username, rounds_win, rounds_lose, rounds_draw, score, date)
@@ -22,5 +22,3 @@ const queries = {
             LIMIT 5;
         `
 };
-
-module.exports = { queries }
