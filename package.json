@@ -4,8 +4,8 @@
   "description": "RockPaperScissors API Server",
   "main": "server.js",
   "scripts": {
-    "build": "parcel build src/index.html",
-    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --no-cache",
+    "start": "parcel src/index.html --no-cache",
     "publish": "surge dist/ threatening-insurance.surge.sh"
   },
   "author": "Paul David Patterson <pddpatterson@gmail.com>",
@@ -15,6 +15,7 @@
     "express": "^4.16.3",
     "mysql": "^2.15.0",
     "react": "^16.3.1",
+    "react-css-modules": "^4.7.2",
     "react-dom": "^16.3.1"
   },
   "devDependencies": {
