@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "parcel build src/index.html",
-    "update": "parcel build src/index.html && node server.js",
+    "start": "nodemon server.js",
     "publish": "surge dist/ threatening-insurance.surge.sh"
   },
   "author": "Paul David Patterson <pddpatterson@gmail.com>",
@@ -13,7 +13,9 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1"
   },
   "devDependencies": {
     "parcel-bundler": "^1.7.0",
