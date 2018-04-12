@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "parcel build src/index.html",
-    "start": "nodemon server.js",
+    "start": "parcel src/index.html",
     "publish": "surge dist/ threatening-insurance.surge.sh"
   },
   "author": "Paul David Patterson <pddpatterson@gmail.com>",
