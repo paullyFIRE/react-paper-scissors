@@ -1,9 +1,10 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Layout from './pages/Layout';
 import GamesModal from '/components/Modals/GamesModal';
 import LeaderboardModal from '/components/Modals/LeaderboardModal';
-import GameArea from '/components/Game/GameArea';
+import GameArea from '/pages/Game';
+import About from '/pages/About';
+import { Route, BrowserRouter } from 'react-router-dom';
 
 class App extends React.Component {
     constructor() {
@@ -22,16 +23,16 @@ class App extends React.Component {
                 },
             },
             data: {}
-        }
-    };
+        };
+    }
 
     componentDidMount() {
         // Fetch Leader and Games Data here
-        this.API('games/leaderboard', 'leaderboard');
-        this.API('games/all', 'games');
+        this.fetchData('games/leaderboard', 'leaderboard');
+        this.fetchData('games/all', 'games');
     }
 
-    API(path, propertyName) {
+    fetchData(path, propertyName) {
         let domain = process.env.NODE_ENV !== 'production' ? "http://159.65.21.186/" : "";
 
         fetch(domain + path)
@@ -46,17 +47,15 @@ class App extends React.Component {
 
     render() {
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-                <div style={{ flex: '1 0 auto' }}>
-                    <Header modals={this.state.modals} title={this.state.title} />
-
+            <BrowserRouter>
+                <div>
+                    <Route exact path='/' component={() => <GameArea {...this.state} />} />
+                    <Route exact path='/about' component={() => <About {...this.state} />} />
+        
                     <LeaderboardModal data={this.state.data.leaderboard} {...this.state.modals.leaderboard} />
                     <GamesModal data={this.state.data.games} {...this.state.modals.games} />
-
-                    <GameArea />
                 </div>
-                <Footer />
-            </div>
+            </BrowserRouter>
         );
     };
 };

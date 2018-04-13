@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MenuButton extends React.Component {
+class ModalButton extends React.Component {
     render (props) {
         return (
             <button className="btn btn-lg" 
@@ -14,4 +14,4 @@ class MenuButton extends React.Component {
     }
 }
 
-export default MenuButton;
+export default ModalButton;

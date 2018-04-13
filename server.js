@@ -18,10 +18,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + serveDirectory + 'index.html'))
+    res.sendFile(path.join(__dirname + serveDirectory + 'index.html'));
 });
 
 const gameRoutes = require('./routes/games');
 app.use('/games', gameRoutes);
 
-app.listen(port, () => console.log(`Basic server listening on port ${port}!`));
+app.listen(port, () => console.log(`Basic server listening on port ${port}.`));

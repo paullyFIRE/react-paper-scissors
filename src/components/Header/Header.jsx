@@ -1,16 +1,26 @@
 import React from 'react';
-import MenuButton from './MenuButton';
+import ModalButton from './ModalButton';
+import LinkButton from './LinkButton';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
     render (props) {
         return (
             <div style={style.header}>
                 <div>
-                    <h1 style={style.title}>{this.props.title}</h1>
+                    <Link to='/'>
+                        <h1 style={style.title}>{this.props.title}</h1>
+                    </Link>
                 </div>
                 <div>
-                    <MenuButton style={style.button} linkModal={this.props.modals.leaderboard}/>
-                    <MenuButton style={style.button} linkModal={this.props.modals.games}/>
+                    <Link to='/'>
+                        <LinkButton style={style.button}>Home</LinkButton>
+                    </Link>
+                    <ModalButton style={style.button} linkModal={this.props.modals.leaderboard}/>
+                    <ModalButton style={style.button} linkModal={this.props.modals.games}/>
+                    <Link to='/about'>
+                        <LinkButton style={style.button}>About</LinkButton>
+                    </Link>
                 </div>
             </div>
         );

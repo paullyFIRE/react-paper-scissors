@@ -26,10 +26,14 @@ class Database {
     queryDatabase(queryStatement) {
         return new Promise ((resolve, reject) => {
             this.pool.getConnection((err, con) => {
-                if (err) reject(err);
+                if (err) {
+                    reject(err);
+                }
 
                 this.pool.query(queryStatement, (err, resp) => {
-                    if (err) reject(err);
+                    if (err) {
+                        reject(err);
+                    }
     
                     this.pool.releaseConnection(con);
                     resolve(resp);
