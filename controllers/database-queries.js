@@ -11,12 +11,12 @@ const queries = {
             `);
     },
     getGames: `
-            SELECT * 
+            SELECT gameID, username, rounds_win, rounds_lose, rounds_draw, score, DATE_FORMAT(date, '%m/%d/%Y %H:%i') as date 
             FROM Games
             ORDER BY date DESC;
         `,
     getLeaderboard: `
-            SELECT *
+            SELECT gameID, username, rounds_win, rounds_lose, rounds_draw, score, DATE_FORMAT(date, '%m/%d/%Y %H:%i') as date
             FROM Games
             ORDER BY score DESC
             LIMIT 5;
