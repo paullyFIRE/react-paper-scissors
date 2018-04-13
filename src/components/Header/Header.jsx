@@ -9,8 +9,8 @@ class Header extends React.Component {
                     <h1 style={style.title}>{this.props.title}</h1>
                 </div>
                 <div>
-                    <MenuButton style={style.button} text="Leaderboard" linkModal={this.props.modals[1]}/>
-                    <MenuButton style={style.button} text="Games" linkModal={this.props.modals[0]}/>
+                    <MenuButton style={style.button} linkModal={this.props.modals.leaderboard}/>
+                    <MenuButton style={style.button} linkModal={this.props.modals.games}/>
                 </div>
             </div>
         );

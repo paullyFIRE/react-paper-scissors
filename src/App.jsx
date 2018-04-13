@@ -34,8 +34,6 @@ class App extends React.Component {
     API(path, propertyName) {
         let domain = process.env.NODE_ENV !== 'production' ? "http://159.65.21.186/" : "";
 
-        console.log(`req: ${domain + path}`);
-
         fetch(domain + path)
         .then(response => response.json())
         .then(data => {
@@ -50,11 +48,9 @@ class App extends React.Component {
         return (
             <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
                 <div style={{ flex: '1 0 auto' }}>
-                    <Header modals={[this.state.modals.games, this.state.modals.leaderboard]} 
-                        title={this.state.title} 
-                    />
+                    <Header modals={this.state.modals} title={this.state.title} />
 
-                    <LeaderboardModal data={this.state.data.leaderboard}    {...this.state.modals.leaderboard} />
+                    <LeaderboardModal data={this.state.data.leaderboard} {...this.state.modals.leaderboard} />
                     <GamesModal data={this.state.data.games} {...this.state.modals.games} />
 
                     <GameArea />

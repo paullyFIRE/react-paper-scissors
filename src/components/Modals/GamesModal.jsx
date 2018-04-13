@@ -11,7 +11,7 @@ class GamesModal extends React.Component {
             let data = [];
 
             for(let game in this.props.data) {
-                let gameData = this.props.data[game];
+                const gameData = this.props.data[game];
                 data.push(<p key={gameData.gameID}>
                     Player: <strong style={{color:'red'}}>{gameData.username}</strong> - 
                     Score: {gameData.score} - 
@@ -19,7 +19,6 @@ class GamesModal extends React.Component {
                     </p>
                 );
             }
-
             return data;
         }
     }
@@ -30,7 +29,6 @@ class GamesModal extends React.Component {
                 <div className="modal-header">
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
                     <h4 className="modal-title">{this.props.heading}</h4>
-                    <p>{this.props.description}</p>
                 </div>
 
                 <div className="modal-body">
