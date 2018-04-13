@@ -11,6 +11,11 @@ const serveDirectory = '/dist/';
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname + serveDirectory)));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Allow-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + serveDirectory + 'index.html'))
