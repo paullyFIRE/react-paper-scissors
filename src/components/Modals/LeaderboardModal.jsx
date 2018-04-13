@@ -6,6 +6,26 @@ class LeaderboardModal extends React.Component {
         super(props)
     }
 
+    tableRows() {
+        if(this.props.data) {
+            let data = [];
+            let leaderBoardPosition = 1;
+
+            for(let game in this.props.data) {
+                let gameData = this.props.data[game];
+                data.push(<p key={gameData.gameID}> {leaderBoardPosition} - 
+                    Player: <strong style={{color:'red'}}>{gameData.username}</strong> - 
+                    Score: {gameData.score} - 
+                    Date: {gameData.date}
+                    </p>
+                );
+                leaderBoardPosition++;
+            }
+
+            return data;
+        }
+    }
+
     render(props) {
         return (
             <Modal modalName={this.props.modalName}>
@@ -16,7 +36,7 @@ class LeaderboardModal extends React.Component {
                 </div>
 
                 <div className="modal-body">
-                    <p>Some text in the modal.</p>
+                    {this.tableRows()}
                 </div>
 
                 <div className="modal-footer">

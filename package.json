@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "parcel build src/index.html --no-cache",
-    "start": "parcel src/index.html --no-cache",
+    "dev": "parcel src/index.html --no-cache",
     "publish": "surge dist/ threatening-insurance.surge.sh"
   },
   "author": "Paul David Patterson <pddpatterson@gmail.com>",

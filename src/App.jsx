@@ -15,25 +15,35 @@ class App extends React.Component {
                 games: {
                     heading: "Recent Games",
                     modalName: "gamesModal",
-                    data: {
-                        headers: [],
-                        dataRows: []
-                    }
                 },
                 leaderboard: {
                     heading: "Leaderboard",
                     modalName: "leaderModal",
-                    data: {
-                        headers: [],
-                        dataRows: []
-                    }
-                }
-            }
+                },
+            },
+            data: {}
         }
     };
 
     componentDidMount() {
         // Fetch Leader and Games Data here
+        this.API('games/leaderboard', 'leaderboard');
+        this.API('games/all', 'games');
+    }
+
+    API(path, propertyName) {
+        let domain = process.env.NODE_ENV !== 'production' ? "http://159.65.21.186/" : "";
+
+        console.log(`req: ${domain + path}`);
+
+        fetch(domain + path)
+        .then(response => response.json())
+        .then(data => {
+            let newState = jQuery.extend({}, this.state);
+            newState.data[propertyName] = data;
+            this.setState(newState);
+        })
+        .catch(err => console.log(err));
     }
 
     render() {
@@ -43,8 +53,9 @@ class App extends React.Component {
                     <Header modals={[this.state.modals.games, this.state.modals.leaderboard]} 
                         title={this.state.title} 
                     />
-                    <LeaderboardModal {...this.state.modals.games} />
-                    <GamesModal {...this.state.modals.leaderboard} />
+
+                    <LeaderboardModal data={this.state.data.leaderboard}    {...this.state.modals.leaderboard} />
+                    <GamesModal data={this.state.data.games} {...this.state.modals.games} />
 
                     <GameArea />
                 </div>
