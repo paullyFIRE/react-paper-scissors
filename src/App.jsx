@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from './pages/Layout';
 import GamesModal from '/components/Modals/GamesModal';
 import LeaderboardModal from '/components/Modals/LeaderboardModal';
+import RulesModal from '/components/Modals/RulesModal';
 import GameArea from '/pages/Game';
 import About from '/pages/About';
 import { Route, BrowserRouter } from 'react-router-dom';
@@ -21,6 +22,10 @@ class App extends React.Component {
                     heading: "Leaderboard",
                     modalName: "leaderModal",
                 },
+                rules: {
+                    heading: 'How To Play',
+                    modalName: 'rules'
+                }
             },
             data: {}
         };
@@ -54,6 +59,7 @@ class App extends React.Component {
         
                     <LeaderboardModal data={this.state.data.leaderboard} {...this.state.modals.leaderboard} />
                     <GamesModal data={this.state.data.games} {...this.state.modals.games} />
+                    <RulesModal {...this.state.modals.rules} />
                 </div>
             </BrowserRouter>
         );

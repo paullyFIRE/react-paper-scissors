@@ -15,7 +15,7 @@ class LeaderboardModal extends React.Component {
                 const gameData = this.props.data[game];
                 data.push(<p key={gameData.gameID}> {leaderBoardPosition} - 
                     Player: <strong style={{color:'red'}}>{gameData.username}</strong> - 
-                    Score: {gameData.score} - 
+                    Score: <strong>{gameData.score}</strong> - 
                     Date: {gameData.date}
                     </p>
                 );

@@ -6,7 +6,7 @@ const Footer = () => {
             justifyContent: 'center',
             alignItems: 'center',
             borderTop: '1px black solid',
-            backgroundColor: '#333',
+            backgroundColor: '#2980b9',
             color: 'white'}}>
             <p>Created by Paul</p>
         </div>
