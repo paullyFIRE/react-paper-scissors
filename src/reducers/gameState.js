@@ -6,10 +6,6 @@ const GameState = (state = {}, action) => {
             return Object.assign({}, state, { score: state.score * 2})
         case 'STARTED':
             return Object.assign({}, state, { started: true });
-        case 'DATA_RECEIVED':
-            let data = {};
-            data[action.data.name] = action.data.data;
-            return Object.assign({}, state, {}, { data: data});
         default:
             return state;
     }

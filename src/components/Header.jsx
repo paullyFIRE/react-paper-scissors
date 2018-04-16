@@ -2,14 +2,11 @@ import React from 'react';
 import ModalButton from './Buttons/ModalButton';
 import LinkButton from './Buttons/LinkButton';
 import { Link } from 'react-router-dom';
+import config from '../config';
 
 class Header extends React.Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-
-        };
     }
 
     render (props) {
@@ -17,12 +14,12 @@ class Header extends React.Component {
             <div style={style.header}>
                 <div>
                     <Link to='/'>
-                        <h1 style={style.title}>{this.props.title}</h1>
+                        <h1 style={style.title}>{config.title}</h1>
                     </Link>
                 </div>
                 <div style={{ display: 'flex' }}>
-                    <ModalButton style={style.button} linkModal={this.props.modals.leaderboard}/>
-                    <ModalButton style={style.button} linkModal={this.props.modals.games}/>
+                    <ModalButton style={style.button} linkModal={config.modals.leaderboard}/>
+                    <ModalButton style={style.button} linkModal={config.modals.games}/>
                     <Link to={location.pathname == '/' ? '/about' : '/'}>
                         <LinkButton style={style.button}>{location.pathname == '/' ? 'About' : 'Home'}</LinkButton>
                     </Link>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from './pages/Layout';
 import GamesModal from '/components/Modals/GamesModal';
 import LeaderboardModal from '/components/Modals/LeaderboardModal';
 import RulesModal from '/components/Modals/RulesModal';
@@ -9,28 +8,6 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
-    constructor() {
-        super()
-
-        this.state = {
-            title: "Rock Paper Scissors",
-            modals: {
-                games: {
-                    heading: "Recent Games",
-                    modalName: "gamesModal",
-                },
-                leaderboard: {
-                    heading: "Leaderboard",
-                    modalName: "leaderModal",
-                },
-                rules: {
-                    heading: 'How To Play',
-                    modalName: 'rules'
-                }
-            },
-            data: {}
-        };
-    }
 
     componentDidMount() {
         // Fetch Leader and Games Data here
@@ -53,12 +30,12 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <div>
-                    <Route exact path='/' component={() => <GameArea {...this.state} />} />
-                    <Route exact path='/about' component={() => <About {...this.state} />} />
+                    <Route exact path='/' component={() => <GameArea />} />
+                    <Route exact path='/about' component={() => <About />} />
         
-                    <LeaderboardModal {...this.state.modals.leaderboard} />
-                    <GamesModal {...this.state.modals.games} />
-                    <RulesModal {...this.state.modals.rules} />
+                    <LeaderboardModal />
+                    <GamesModal />
+                    <RulesModal />
                 </div>
             </BrowserRouter>
         );
@@ -67,14 +44,15 @@ class App extends React.Component {
 
 const mapState = (state) => {
     return {
-        data: state.data
+        data: state.api
     };
 };
 
 const mapDispatch = (dispatch) => {
     return {
-        dataReceived(name, data) { dispatch({ type: 'DATA_RECEIVED', data: { name, data }}) }
-    }
-}
+        dataReceived(name, data) { 
+            dispatch({ type: 'DATA_RECEIVED', name, data }) }
+    };
+};
 
 export default connect(mapState, mapDispatch)(App);

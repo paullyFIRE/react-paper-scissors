@@ -1,17 +1,18 @@
 import React from 'react';
 import Modal from './Modal';
+import config from '../../config';
 
 class RulesModal extends React.Component {
     constructor(props) {
         super(props)
     }
 
-    render(props) {
+    render() {
         return (
-            <Modal modalName={this.props.modalName}>
+            <Modal modalName={config.modals.rules.modalName}>
                 <div className="modal-header">
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
-                    <h4 className="modal-title">{this.props.heading}</h4>
+                    <h4 className="modal-title">{config.modals.rules.heading}</h4>
                 </div>
 
                 <div className="modal-body">

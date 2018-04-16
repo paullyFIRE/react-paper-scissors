@@ -1,14 +1,15 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
+import config from '../../config';
 
 class GamesModal extends React.Component {
     constructor(props) {
         super(props)
     }
 
-    tableRows() {
-        if(this.props.data) {
+    tableRows(apiData) {
+        if(apiData) {
             let data = [];
 
             for(let game in this.props.data) {
@@ -17,23 +18,24 @@ class GamesModal extends React.Component {
                     Player: <strong style={{color:'red'}}>{gameData.username}</strong> - 
                     Score: <strong>{gameData.score}</strong> - 
                     Date: {gameData.date}
-                    </p>
-                );
+                    </p>);
             }
             return data;
+        } else {
+            return <p>Nothing here yet... waiting for database.</p>
         }
     }
 
-    render(props) {
+    render() {
         return (
-            <Modal modalName={this.props.modalName}>
+            <Modal modalName={this.props.modal.modalName}>
                 <div className="modal-header">
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
-                    <h4 className="modal-title">{this.props.heading}</h4>
+                    <h4 className="modal-title">{this.props.modal.heading}</h4>
                 </div>
 
                 <div className="modal-body">
-                    {this.tableRows()}
+                    {this.tableRows(this.props.data)}
                 </div>
 
                 <div className="modal-footer">
@@ -46,8 +48,8 @@ class GamesModal extends React.Component {
 
 const mapState = (state) => {
     return {
-        data: state.data.games,
-        printState() { console.log(state) }
+        data: state.api.games,
+        modal: config.modals.games
     };
 };
 

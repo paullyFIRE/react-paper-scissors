@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
+import config from '../../config';
 
 class LeaderboardModal extends React.Component {
     constructor(props) {
@@ -26,13 +27,12 @@ class LeaderboardModal extends React.Component {
         }
     }
 
-    render(props) {
-        this.props.printState();
+    render() {
         return (
-            <Modal modalName={this.props.modalName}>
+            <Modal modalName={this.props.modal.modalName}>
                 <div className="modal-header">
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
-                    <h4 className="modal-title">{this.props.heading}</h4>
+                    <h4 className="modal-title">{this.props.modal.heading}</h4>
                 </div>
 
                 <div className="modal-body">
@@ -49,8 +49,8 @@ class LeaderboardModal extends React.Component {
 
 const mapState = (state) => {
     return {
-        data: state.data.leaderboard,
-        printState() { console.log(state) }
+        data: state.api.leaderboard,
+        modal: config.modals.leaderboard
     };
 };
 

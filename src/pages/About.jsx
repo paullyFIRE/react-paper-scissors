@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from './Layout';
 
 class About extends React.Component {
-    render(props) {
+    render() {
         return (
             <div>
-                <Layout {...this.props}>
+                <Layout>
                     <div style={{ margin: '0 auto', width: '650px' }}>
                         <h1>Hello, this is the about page!</h1>
                         <p>lorem ipsum lorem ipsum lorem

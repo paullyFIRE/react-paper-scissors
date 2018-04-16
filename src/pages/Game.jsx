@@ -1,12 +1,14 @@
+import { connect } from 'react-redux';
 import React from 'react';
 import Layout from './Layout';
+import config from '../config';
 import rockSvg from '../images/rock.svg';
 import paperSvg from '../images/paper.svg';
 import scissorsSvg from '../images/scissors.svg';
 import ModalButton from '../components/Buttons/ModalButton';
 import ControlButton from '../components/Buttons/ControlButton';
 import GameActionButton from '../components/Buttons/GameActionButton';
-import { connect } from 'react-redux';
+
 
 class GameArea extends React.Component {
     constructor(props) {
@@ -16,26 +18,25 @@ class GameArea extends React.Component {
     }
 
     gameControlButton(event) {
-        if(!this.props.started) {
+        if(!this.props.game.started) {
             this.props.dispatch.gameStarted();
         }
     }
 
-    render(props) {
-        console.log(this.props);
+    render() {
         return (
-            <div style={styles.baseStyles}>
-                <Layout {...this.props}>
+            <Layout>
+                <div style={styles.baseStyles}>
                     <div style={{ margin: '0 auto', width: '80vw', maxWidth: '1100px' }}>
 
                         <div style={{ display: 'flex', justifyContent: 'space-around',
-                                     alignItems: 'center', padding: '1.5em 0 0', maxWidth: '650px', margin: '0 auto' }}>
+                                    alignItems: 'center', padding: '1.5em 0 0', maxWidth: '650px', margin: '0 auto' }}>
                             <ControlButton eventHandler={this.gameControlButton}>Reset Game</ControlButton>
                             <ControlButton eventHandler={this.gameControlButton}>Submit Score</ControlButton>
-                            <ModalButton linkModal={this.props.modals.rules} className="btn btn-lg">Rules</ModalButton>
+                            <ModalButton linkModal={config.modals.rules} className="btn btn-lg">Rules</ModalButton>
                         </div>
 
-                        {this.props.started ? null :
+                        {this.props.game.started ? null :
                             <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
                                 <h2>Hit a Button to Begin</h2>
                             </div>
@@ -44,13 +45,13 @@ class GameArea extends React.Component {
                         <div style={{ border: '1px solid grey', marginTop: '1em'}}>
                             <div style={{ display: 'flex', justifyContent: 'center'}}>
                                 <label style={{ paddingTop: '10px', fontSize: '1.5em' }}>
-                                    Score: <span style={styles.scoreHighlight}>{this.props.score}</span>
+                                    Score: <span style={styles.scoreHighlight}>{this.props.game.score}</span>
                                 </label>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', padding: '0 5vw' }}>
-                                <label>Rounds Won: <span style={styles.scoreHighlight}>{this.props.roundsWon}</span></label>
-                                <label>Rounds Lost: <span style={styles.scoreHighlight}>{this.props.roundsLost}</span> / 3</label>
-                                <label>Multipliers Won: <span style={styles.scoreHighlight}>{this.props.multipliers}</span></label>
+                                <label>Rounds Won: <span style={styles.scoreHighlight}>{this.props.game.roundsWon}</span></label>
+                                <label>Rounds Lost: <span style={styles.scoreHighlight}>{this.props.game.roundsLost}</span> / 3</label>
+                                <label>Multipliers Won: <span style={styles.scoreHighlight}>{this.props.game.multipliers}</span></label>
                             </div>
                         </div>
 
@@ -69,19 +70,21 @@ class GameArea extends React.Component {
                         <div id="round-history">
                         </div>
                     </div>
-                </Layout>
-            </div>
+                </div>
+            </Layout>
         );
     }
 }
 
 const mapState = (state) => {
     return {
-        started: state.started,
-        score: state.score,
-        roundsWon: state.roundsWon,
-        roundsLost: state.roundsLost,
-        multipliers: state.multipliers
+        game: {
+            started: state.game.started,
+            score: state.game.score,
+            roundsWon: state.game.roundsWon,
+            roundsLost: state.game.roundsLost,
+            multipliers: state.game.multipliers
+        }
     };
 };
 
