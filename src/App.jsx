@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 class App extends React.Component {
 
     componentDidMount() {
-        // Fetch Leader and Games Data here
         this.fetchData('games/leaderboard', 'leaderboard');
         this.fetchData('games/all', 'games');
     }
@@ -30,8 +29,8 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <div>
-                    <Route exact path='/' component={() => <GameArea />} />
-                    <Route exact path='/about' component={() => <About />} />
+                    <Route exact path='/' component={GameArea} />
+                    <Route exact path='/about' component={About} />
         
                     <LeaderboardModal />
                     <GamesModal />
@@ -41,13 +40,6 @@ class App extends React.Component {
         );
     };
 };
-
-const mapState = (state) => {
-    return {
-        data: state.api
-    };
-};
-
 const mapDispatch = (dispatch) => {
     return {
         dataReceived(name, data) { 
@@ -55,4 +47,4 @@ const mapDispatch = (dispatch) => {
     };
 };
 
-export default connect(mapState, mapDispatch)(App);
+export default connect(null, mapDispatch)(App);

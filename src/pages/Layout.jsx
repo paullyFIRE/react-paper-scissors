@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { connect } from 'react-redux';
 import config from '../config';
 
 class Layout extends React.Component {
