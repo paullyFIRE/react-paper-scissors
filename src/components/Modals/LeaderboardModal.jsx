@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
+import { connect } from 'react-redux';
 
 class LeaderboardModal extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class LeaderboardModal extends React.Component {
     }
 
     render(props) {
+        this.props.printState();
         return (
             <Modal modalName={this.props.modalName}>
                 <div className="modal-header">
@@ -45,4 +47,11 @@ class LeaderboardModal extends React.Component {
     }
 }
 
-export default LeaderboardModal;
+const mapState = (state) => {
+    return {
+        data: state.data.leaderboard,
+        printState() { console.log(state) }
+    };
+};
+
+export default connect(mapState)(LeaderboardModal);

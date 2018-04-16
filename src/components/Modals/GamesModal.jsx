@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
+import { connect } from 'react-redux';
 
 class GamesModal extends React.Component {
     constructor(props) {
@@ -43,4 +44,11 @@ class GamesModal extends React.Component {
     }
 }
 
-export default GamesModal;
+const mapState = (state) => {
+    return {
+        data: state.data.games,
+        printState() { console.log(state) }
+    };
+};
+
+export default connect(mapState)(GamesModal);

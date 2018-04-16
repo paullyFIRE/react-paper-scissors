@@ -6,6 +6,7 @@ import RulesModal from '/components/Modals/RulesModal';
 import GameArea from '/pages/Game';
 import About from '/pages/About';
 import { Route, BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class App extends React.Component {
     constructor() {
@@ -43,9 +44,7 @@ class App extends React.Component {
         fetch(domain + path)
         .then(response => response.json())
         .then(data => {
-            let newState = jQuery.extend({}, this.state);
-            newState.data[propertyName] = data;
-            this.setState(newState);
+            this.props.dataReceived(propertyName, data);
         })
         .catch(err => console.log(err));
     }
@@ -57,8 +56,8 @@ class App extends React.Component {
                     <Route exact path='/' component={() => <GameArea {...this.state} />} />
                     <Route exact path='/about' component={() => <About {...this.state} />} />
         
-                    <LeaderboardModal data={this.state.data.leaderboard} {...this.state.modals.leaderboard} />
-                    <GamesModal data={this.state.data.games} {...this.state.modals.games} />
+                    <LeaderboardModal {...this.state.modals.leaderboard} />
+                    <GamesModal {...this.state.modals.games} />
                     <RulesModal {...this.state.modals.rules} />
                 </div>
             </BrowserRouter>
@@ -66,4 +65,16 @@ class App extends React.Component {
     };
 };
 
-export default App;
+const mapState = (state) => {
+    return {
+        data: state.data
+    };
+};
+
+const mapDispatch = (dispatch) => {
+    return {
+        dataReceived(name, data) { dispatch({ type: 'DATA_RECEIVED', data: { name, data }}) }
+    }
+}
+
+export default connect(mapState, mapDispatch)(App);

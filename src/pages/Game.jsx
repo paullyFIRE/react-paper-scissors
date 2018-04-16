@@ -6,29 +6,23 @@ import scissorsSvg from '../images/scissors.svg';
 import ModalButton from '../components/Buttons/ModalButton';
 import ControlButton from '../components/Buttons/ControlButton';
 import GameActionButton from '../components/Buttons/GameActionButton';
+import { connect } from 'react-redux';
 
 class GameArea extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            score: 0,
-            multipliersWon: 0,
-            roundsWon: 0,
-            roundsLost: 0,
-            gameStarted: false,
-        }
-
         this.gameControlButton = this.gameControlButton.bind(this);
     }
 
     gameControlButton(event) {
-        if(!this.state.gameStarted) {
-            this.setState({gameStarted : true});
+        if(!this.props.started) {
+            this.props.dispatch.gameStarted();
         }
     }
 
     render(props) {
+        console.log(this.props);
         return (
             <div style={styles.baseStyles}>
                 <Layout {...this.props}>
@@ -41,7 +35,7 @@ class GameArea extends React.Component {
                             <ModalButton linkModal={this.props.modals.rules} className="btn btn-lg">Rules</ModalButton>
                         </div>
 
-                        {this.state.gameStarted ? null :
+                        {this.props.started ? null :
                             <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
                                 <h2>Hit a Button to Begin</h2>
                             </div>
@@ -49,12 +43,14 @@ class GameArea extends React.Component {
 
                         <div style={{ border: '1px solid grey', marginTop: '1em'}}>
                             <div style={{ display: 'flex', justifyContent: 'center'}}>
-                                <label style={{ paddingTop: '10px', fontSize: '1.5em' }}>Score: <span style={styles.scoreHighlight}>{Math.floor(Math.random()*25000)}</span></label>
+                                <label style={{ paddingTop: '10px', fontSize: '1.5em' }}>
+                                    Score: <span style={styles.scoreHighlight}>{this.props.score}</span>
+                                </label>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', padding: '0 5vw' }}>
-                                <label>Rounds Won: <span style={styles.scoreHighlight}>{Math.floor(Math.random()*10)}</span></label>
-                                <label>Rounds Lost: <span style={styles.scoreHighlight}>{Math.floor(Math.random()*3)}</span> / 3</label>
-                                <label>Multipliers Won: <span style={styles.scoreHighlight}>{Math.floor(Math.random()*10)}</span></label>
+                                <label>Rounds Won: <span style={styles.scoreHighlight}>{this.props.roundsWon}</span></label>
+                                <label>Rounds Lost: <span style={styles.scoreHighlight}>{this.props.roundsLost}</span> / 3</label>
+                                <label>Multipliers Won: <span style={styles.scoreHighlight}>{this.props.multipliers}</span></label>
                             </div>
                         </div>
 
@@ -79,6 +75,24 @@ class GameArea extends React.Component {
     }
 }
 
+const mapState = (state) => {
+    return {
+        started: state.started,
+        score: state.score,
+        roundsWon: state.roundsWon,
+        roundsLost: state.roundsLost,
+        multipliers: state.multipliers
+    };
+};
+
+const mapDispatch = (dispatch) => {
+    return {
+        dispatch: {
+            gameStarted() { dispatch({ type: 'STARTED' }) }
+        }
+    }
+}
+
 const styles = {
     baseStyles: {
         fontSize: '1.5em',
@@ -89,4 +103,4 @@ const styles = {
     }
 };
 
-export default GameArea;
+export default connect(mapState, mapDispatch)(GameArea);
