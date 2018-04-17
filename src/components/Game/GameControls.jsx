@@ -8,9 +8,9 @@ class GameHeaderControls extends React.Component {
     render(props) {
         return (
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                <GameActionButton value="rock" eventHandler={this.props.eventHandler} src={rockSvg}></GameActionButton>
-                <GameActionButton value="paper" eventHandler={this.props.eventHandler} src={paperSvg}></GameActionButton>
-                <GameActionButton value="scissors" eventHandler={this.props.eventHandler} src={scissorsSvg}></GameActionButton>
+                <GameActionButton style={this.props.style} value="rock" eventHandler={this.props.eventHandler} src={rockSvg}></GameActionButton>
+                <GameActionButton style={this.props.style} value="paper" eventHandler={this.props.eventHandler} src={paperSvg}></GameActionButton>
+                <GameActionButton style={this.props.style} value="scissors" eventHandler={this.props.eventHandler} src={scissorsSvg}></GameActionButton>
             </div>
         );
     }

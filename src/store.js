@@ -26,8 +26,9 @@ const defaultState = {
 };
 
 const logger = store => next => action => {
-    if(action.type !== 'DATA_RECEIVED') {
+    if(action.type !== 'DATA_RECEIVED' && action.type !== 'GAME_CONTROL_MAIN') {
         console.log('dispatching', action);
+        console.log('prev state', store.getState());
         let result = next(action);
         console.log('next state', store.getState());
         return result;

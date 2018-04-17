@@ -2,6 +2,8 @@ import React from 'react';
 import GamesModal from '/components/Modals/GamesModal';
 import LeaderboardModal from '/components/Modals/LeaderboardModal';
 import RulesModal from '/components/Modals/RulesModal';
+import ScoreSubmitModal from '/components/Modals/ScoreSubmitModal';
+import MultiplierModal from '/components/Modals/MultiplierModal';
 import GameArea from '/pages/Game';
 import About from '/pages/About';
 import { Route, BrowserRouter } from 'react-router-dom';
@@ -35,6 +37,8 @@ class App extends React.Component {
                     <LeaderboardModal />
                     <GamesModal />
                     <RulesModal />
+                    <ScoreSubmitModal />
+                    <MultiplierModal />
                 </div>
             </BrowserRouter>
         );

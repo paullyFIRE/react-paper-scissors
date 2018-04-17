@@ -4,6 +4,7 @@ import Layout from './Layout';
 import GameScoreBoard from '../components/Game/GameScoreBoard';
 import GameHeaderControls from '../components/Game/GameHeaderControls';
 import GameControls from '../components/Game/GameControls';
+import config from '../config';
 
 class GameArea extends React.Component {
     constructor() {
@@ -18,7 +19,7 @@ class GameArea extends React.Component {
         } else if (event.nativeEvent.srcElement.value == "RESET") {
             this.props.dispatch("RESET_GAME");
         } else {
-            this.props.dispatch("GAME_CONTROL", event.nativeEvent.srcElement.alt)
+            this.props.dispatch("GAME_CONTROL_MAIN", event.nativeEvent.srcElement.alt)
         }
     }
     
@@ -39,9 +40,9 @@ class GameArea extends React.Component {
                         <GameScoreBoard />
 
                         <div style={{ display: 'flex', justifyContent: 'space-around', maxWidth: '650px', margin: '1.5em auto 1.5em auto'}}>
-                            <label className="score-label">Player Score: {this.props.gameState.currentRound.pointsPlayer} / 5</label>
+                            <label className="score-label">Player Score: {this.props.gameState.currentRound.pointsPlayer} / {this.props.gameState.roundLimit}</label>
                             <label className="score-label">Draws: {this.props.gameState.currentRound.pointsDraw} </label>
-                            <label className="score-label">Computer Score: {this.props.gameState.currentRound.pointsCPU} / 5</label>
+                            <label className="score-label">Computer Score: {this.props.gameState.currentRound.pointsCPU} / {this.props.gameState.roundLimit}</label>
                         </div>
 
                         <GameControls eventHandler={this.gameEventHandler} />
@@ -61,7 +62,8 @@ const mapState = (state) => {
             started: state.game.started,
             score: state.game.score,
             multipliers: state.game.multipliers,
-            currentRound: state.game.rounds[0]
+            currentRound: state.game.rounds[0],
+            roundLimit: config.roundLimit
         }
     };
 };

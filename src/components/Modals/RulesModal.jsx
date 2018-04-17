@@ -3,8 +3,8 @@ import Modal from './Modal';
 import config from '../../config';
 
 class RulesModal extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
     }
 
     render() {

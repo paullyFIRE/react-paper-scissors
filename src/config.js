@@ -1,17 +1,27 @@
 const config = {
     title: "Rock Paper Scissors",
+    roundLimit: 3,
+    lossLimit: 3,
     modals: {
         games: {
             heading: "Recent Games",
-            modalName: "gamesModal",
+            modalName: "games-modal",
         },
         leaderboard: {
             heading: "Leaderboard",
-            modalName: "leaderModal",
+            modalName: "leader-modal",
         },
         rules: {
             heading: 'How To Play',
-            modalName: 'rules'
+            modalName: 'rules-modal'
+        },
+        scoreSubmit: {
+            heading: 'Submit Your Score!',
+            modalName: 'submit-modal'
+        },
+        multiplier: {
+            heading: 'DOUBLE UP!',
+            modalName: 'multiplier-modal'
         }
     }
 }

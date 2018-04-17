@@ -2,17 +2,37 @@
 export const play = (playerChoice) => {
     const computer = generateResponse();
 
-    console.log(playerChoice, computer);
-
-    if(evaluateWinner(playerChoice, computer)) {
-        return 'WIN';
+    if(playerChoice !== computer) {
+        if(evaluateWinner(playerChoice, computer)) {
+            return 'WIN';
+        } else {
+            return 'LOSE';
+        }
     } else {
-        return 'LOSE';
+        return 'DRAW';
     }
 }
 
 const evaluateWinner = (playerChoice, computer) => {
-    return true;
+    if(playerChoice === 'rock') {
+        if(computer === 'paper') {
+            return false;
+        } else {
+            return true;
+        }
+    } else if(playerChoice === 'paper') {
+        if(computer === 'scissors') {
+            return false;
+        } else {
+            return true;
+        }
+    } else if(playerChoice === 'scissors') {
+        if(computer === 'rock') {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 
 const generateResponse = () => {

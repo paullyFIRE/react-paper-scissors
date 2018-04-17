@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import config from '../../config';
 
 class GamesModal extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
     }
 
     tableRows(apiData) {
