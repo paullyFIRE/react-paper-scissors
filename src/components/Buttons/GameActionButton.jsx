@@ -6,7 +6,6 @@ class GameActionButton extends React.Component {
             <button className="btn"
                 type="button"
                 style={styles.gameButton}
-                value={this.props.value}
                 onClick={this.props.eventHandler}>
                 <img style={styles.gameButtonSVG} src={this.props.src} alt={this.props.value} />
             </button>

@@ -16,7 +16,6 @@ class RulesModal extends React.Component {
                 </div>
 
                 <div className="modal-body">
-                    <p>Rock Paper Scissors... basically.</p>
                     <p>The aim is to get as high a score as possible, to get yourself onto the leaderboard!</p>
                     <p>For each first-to-5 round against the AI, you'll get points for the following:</p>
                     <ul>

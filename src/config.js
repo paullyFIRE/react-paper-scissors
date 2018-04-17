@@ -13,7 +13,7 @@ const config = {
             heading: 'How To Play',
             modalName: 'rules'
         }
-    },
+    }
 }
 
 export default config;

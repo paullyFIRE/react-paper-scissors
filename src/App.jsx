@@ -40,6 +40,7 @@ class App extends React.Component {
         );
     };
 };
+
 const mapDispatch = (dispatch) => {
     return {
         dataReceived(name, data) { 

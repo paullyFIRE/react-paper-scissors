@@ -5,6 +5,7 @@ class ControlButton extends React.Component {
         return (
             <button className="btn btn-lg" 
                 type="button"
+                value={this.props.value}
                 onClick={this.props.eventHandler}
                 style={this.props.style}>
                 {this.props.children}
