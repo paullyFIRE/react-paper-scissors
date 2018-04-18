@@ -77,9 +77,6 @@ const GameState = (state = {}, action) => {
 
         case 'STARTED':
             return Object.assign({}, state, { started: true });
-
-        case 'SUBMIT':
-            return state;
             
         default:
             return state;

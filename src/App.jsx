@@ -15,6 +15,8 @@ class App extends React.Component {
     componentDidMount() {
         this.fetchData('games/leaderboard', 'leaderboard');
         this.fetchData('games/all', 'games');
+
+        $(`#submit-modal`).modal();
     }
 
     fetchData(path, propertyName) {

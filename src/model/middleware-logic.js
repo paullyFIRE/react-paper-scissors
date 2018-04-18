@@ -80,8 +80,14 @@ const mwlogic = (store) => next => action => {
         next(action);
 
     } else if (action.type == 'SUBMIT_SCORE') {
-        $(`#${config.modals.scoreSubmit.modalName}`).modal("show");
+        const state = store.getState();
 
+        store.dispatch({ type: 'POST_GAME', data: {
+            username: action.username,
+            score: state.game.score,
+        }});
+
+        next(action);
     } else if (action.type == 'RESET_GAME') {
         store.dispatch({ type: 'RESET_PREVIEW_QUEUE' });
         next(action);

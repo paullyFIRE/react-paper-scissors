@@ -15,7 +15,7 @@ class GameArea extends React.Component {
 
     gameEventHandler(event) {
         if(event.nativeEvent.srcElement.value == "SUBMIT") {
-            this.props.dispatch("SUBMIT_SCORE");
+            $(`#${config.modals.scoreSubmit.modalName}`).modal("show");
         } else if (event.nativeEvent.srcElement.value == "RESET") {
             this.props.dispatch("RESET_GAME");
         } else {

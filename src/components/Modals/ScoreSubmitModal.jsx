@@ -1,10 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import Modal from './Modal';
+import GameScoreBoard from '../Game/GameScoreBoard';
 import config from '../../config';
 
 class ScoreSubmitModal extends React.Component {
     constructor() {
         super()
+
+        this.username = "";
+
+        this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
+    }
+
+    usernameChangeHandler(changeEvent) {
+        this.username = changeEvent.target.value
+    }
+
+    submitHandler() {
+        this.props.postGame(this.username);
     }
 
     render() {
@@ -16,17 +31,36 @@ class ScoreSubmitModal extends React.Component {
                 </div>
 
                 <div className="modal-body">
-                    <form>
-                        <label>Username:</label> <input name="username" text="text" />
-                    </form>
+                    <GameScoreBoard style={{ border: 'none' }} />
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                        <label>Enter Your Alias Here</label>
+                        <form>
+                            <input name="username" text="text" 
+                                style={{ fontSize: '25px', border: 'none', borderBottom: '2px solid red', color: 'red', width: 'auto' }}
+                                onChange={this.usernameChangeHandler}
+                            />
+                        </form>
+                    </div>
                 </div>
 
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                <div className="modal-footer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    {/* <button onClick={this.submitHandler} type="button" className="btn btn-lg" data-dismiss="modal">Submit Game</button> */}
+                    <button onClick={this.submitHandler} type="button" className="btn btn-lg">Submit Game</button>
                 </div>
             </Modal>
         );
     }
 }
 
-export default ScoreSubmitModal;
+const mapState = (state) => {
+    return {
+        duels: state
+    }
+}
+const mapDispatch = (dispatch) => {
+    return {
+        postGame(username) { dispatch({ type: 'SUBMIT_SCORE', username })}
+    }
+}
+
+export default connect(mapState, mapDispatch)(ScoreSubmitModal);
