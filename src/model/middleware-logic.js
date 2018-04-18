@@ -22,7 +22,7 @@ const mwlogic = (store) => next => action => {
         next(action);
     } else if (action.type == "GAME_CONTROL_MULTIPLIER" && action.data) {
         //ACTION HANDLER HERE FOR THE MULTIPLER GAMEPLAY
-
+        
 
     } else if (action.type == 'POINT_WON') {
         const state = store.getState();

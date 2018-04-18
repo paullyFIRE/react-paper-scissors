@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import game from './reducers/gameState';
 import api from './reducers/API';
+import roundPreviewQueue from './reducers/roundPreviewQueue';
 import mwlogic from './model/middleware-logic';
 
 const defaultState = {
@@ -23,6 +24,13 @@ const defaultState = {
         leaderboard: {},
         games: {}
     },
+    roundPreviewQueue: [{
+        id: 1,
+        status: 'PENDING',
+        player: 'rock',
+        computer: 'paper',
+        result: 'WIN'
+    }]
 };
 
 const logger = store => next => action => {
@@ -37,7 +45,7 @@ const logger = store => next => action => {
     }
 };
 
-const reducers = combineReducers({ game, api });
+const reducers = combineReducers({ game, api, roundPreviewQueue });
 const store = createStore(reducers, defaultState, applyMiddleware(logger, mwlogic));
 
 module.exports = { store };

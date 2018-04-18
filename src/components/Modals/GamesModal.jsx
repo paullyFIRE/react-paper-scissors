@@ -21,8 +21,6 @@ class GamesModal extends React.Component {
                     </p>);
             }
             return data;
-        } else {
-            return <p>Nothing here yet... waiting for database.</p>
         }
     }
 

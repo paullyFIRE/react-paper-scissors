@@ -22,6 +22,10 @@ const config = {
         multiplier: {
             heading: 'DOUBLE UP!',
             modalName: 'multiplier-modal'
+        },
+        roundResult: {
+            heading: 'Round Result',
+            modalName: 'result-modal'
         }
     }
 }
