@@ -1,4 +1,5 @@
 import { play } from './game-logic';
+import { fetchData } from './api-logic';
 import config from '../config';
 
 const mwlogic = (store) => next => action => {
@@ -42,9 +43,9 @@ const mwlogic = (store) => next => action => {
         
 
     } else if (action.type == 'POINT_WON') {
-        const state = store.getState();
-
         next(action);
+
+        const state = store.getState();
 
         if(state.game.rounds[0].pointsPlayer == config.roundLimit) {
             store.dispatch({ type: 'ROUND_WON' });
@@ -85,15 +86,54 @@ const mwlogic = (store) => next => action => {
         store.dispatch({ type: 'POST_GAME', data: {
             username: action.username,
             score: state.game.score,
-            roundsWon: state.game.roundsWon,
-            roundsLost: state.game.roundsLost
+            roundsWin: state.game.roundsWon,
+            roundsLose: state.game.roundsLost
         }});
-
+    
+    } else if (action.type == 'POST_GAME') {
         next(action);
+        $(`#${config.modals.scoreSubmit.modalName} .modal-footer button`).attr("disabled","disabled");
+        
+        fetchData('games/post', { method: 'POST', data: action.data }, (data) => {
+            if(data.success == 1) {
+                store.dispatch({ type: 'POST_SUCCESS' });
+            } else {
+                store.dispatch({ type: 'POST_FAILURE' });
+            }
+        })
+
+    } else if (action.type == 'POST_SUCCESS' || action.type == 'POST_FAILURE') {
+        next(action);
+        //Update UI of Modal with Response
+        const $modal = $(`#${config.modals.scoreSubmit.modalName}`);
+        const $modalButton = $(`#${config.modals.scoreSubmit.modalName} .modal-footer button`);
+
+        switch(action.type) {
+            case 'POST_SUCCESS':
+                $modalButton.addClass('btn-success');
+                $modalButton.text('Success!');
+
+                setTimeout(() => {
+                        $modal.modal("hide");
+                        $modalButton.removeAttr("disabled");
+                }, config.modals.scoreSubmit.closeDelay + 1500);
+
+                break;
+
+            case 'POST_FAILURE':
+                $modalButton.addClass('btn-danger');
+                $modalButton.text('Something Went Wrong! Please try again');
+
+                setTimeout(() => {
+                    $modal.modal("hide");
+                    $modalButton.removeAttr("disabled");
+                }, config.modals.scoreSubmit.closeDelay);
+
+                break;
+        }
     } else if (action.type == 'RESET_GAME') {
         store.dispatch({ type: 'RESET_PREVIEW_QUEUE' });
         next(action);
-
     } else {
         next(action);
         

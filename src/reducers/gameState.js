@@ -61,7 +61,7 @@ const GameState = (state = {}, action) => {
 
         // Game Control
         case 'RESET_GAME':
-            return Object.assign({}, state, {
+            return Object.assign({}, {
                 started: false,
                 score: 0,
                 roundsWon: 0,

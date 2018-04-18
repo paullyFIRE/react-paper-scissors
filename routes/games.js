@@ -9,13 +9,12 @@ router.post('/post', (req, res) => {
         player: req.body.username,
         roundsWin: req.body.roundsWin,
         roundsLose: req.body.roundsLose,
-        roundsDraw: req.body.roundsDraw,
         score: req.body.score
     };
-
+    
     const query = db.postGame(game);
-    query.then(resp => res.send(resp))
-    .catch(err => res.send(err));
+    query.then(resp => res.send({ "success": 1 }))
+    .catch(err => res.send({ "success": 0 }));
 });
 
 router.get('/all', (req, res) => {

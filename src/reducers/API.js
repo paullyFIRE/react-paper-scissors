@@ -6,9 +6,22 @@ const api = (state = {}, action) => {
             return Object.assign({}, state, data);
         
         case 'POST_GAME':
-        console.log("POST RECEIVED RECIEVED");
-        console.log(action);
-            return state;
+            return Object.assign({}, state, {
+                postRequests: [{
+                    id: state.postRequests[0] ? state.postRequests[0].id + 1 : 1,
+                    username: action.data.username,
+                    score: action.data.score,
+                    roundsWin: action.data.roundsWin,
+                    roundsLose: action.data.roundsLose,
+                    status: 'PENDING',
+                }, ...state.postRequests]
+            });
+        
+        case 'POST_SUCCESS':
+            const requests = state.postRequests;
+            requests[0].status = 'COMPLETED'
+            return Object.assign({}, state, { postRequests: requests });
+
         default:
             return state;
     }

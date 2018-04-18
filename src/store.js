@@ -4,14 +4,18 @@ import mwlogic from './model/middleware-logic';
 import game from './reducers/gameState';
 import api from './reducers/API';
 
+let random = (seed) => {
+    return Math.floor(Math.random() * seed);
+}
+
 const defaultState = {
     game: {
         started: false,
         statusText: 'Hit a Button to Begin!',
-        score: 0,
-        roundsWon: 0,
-        roundsLost: 0,
-        multipliers: 0,
+        score: random(100)*100,
+        roundsWon: random(10),
+        roundsLost: random(4),
+        multipliers: random(10),
         rounds: [
             {
                 id: 1,
@@ -23,7 +27,9 @@ const defaultState = {
     },
     api: {
         leaderboard: {},
-        games: {}
+        games: {},
+        postRequests: [
+        ]
     },
     duelResultQueue: {
         queue: []

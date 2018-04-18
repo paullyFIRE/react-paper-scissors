@@ -44,7 +44,6 @@ class ScoreSubmitModal extends React.Component {
                 </div>
 
                 <div className="modal-footer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    {/* <button onClick={this.submitHandler} type="button" className="btn btn-lg" data-dismiss="modal">Submit Game</button> */}
                     <button onClick={this.submitHandler} type="button" className="btn btn-lg">Submit Game</button>
                 </div>
             </Modal>
@@ -52,15 +51,10 @@ class ScoreSubmitModal extends React.Component {
     }
 }
 
-const mapState = (state) => {
-    return {
-        duels: state
-    }
-}
 const mapDispatch = (dispatch) => {
     return {
         postGame(username) { dispatch({ type: 'SUBMIT_SCORE', username })}
     }
 }
 
-export default connect(mapState, mapDispatch)(ScoreSubmitModal);
+export default connect(null, mapDispatch)(ScoreSubmitModal);

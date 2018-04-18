@@ -6,10 +6,14 @@ const config = {
         games: {
             heading: "Recent Games",
             modalName: "games-modal",
+            apiPath: 'games/all',
+            stateStore: 'games'
         },
         leaderboard: {
             heading: "Leaderboard",
             modalName: "leader-modal",
+            apiPath: 'games/leaderboard',
+            stateStore: 'leaderboard'
         },
         rules: {
             heading: 'How To Play',
@@ -17,7 +21,8 @@ const config = {
         },
         scoreSubmit: {
             heading: 'Submit Your Score!',
-            modalName: 'submit-modal'
+            modalName: 'submit-modal',
+            closeDelay: 1500
         },
         multiplier: {
             heading: 'DOUBLE UP!',

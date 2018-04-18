@@ -67,13 +67,11 @@ class DuelResultModal extends React.Component {
     }
 
     render() {
-        
-
         return (
-            <Modal modalName={this.props.modal.modalName}>
+            <Modal modalName={this.props.modal.modalName} dialogStyle={{ position: 'absolute', width: '85%', maxWidth: '800px', top: '40%', left: '50%', transform: 'translate(-50%, -50%)'}}>
                 <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', height: '300px'}}>
 
-                <div className="duelModalTitle" style={{ display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', height: '200' }}>
+                <div className="duelModalTitle" style={{ display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
                     <h2 style={{ display: 'none' }}>You <strong style={{ color: 'green' }}>{this.props.duelState ? this.props.duelState.result : ""}</strong>!</h2>
                 </div>
 

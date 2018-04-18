@@ -12,8 +12,7 @@ const duelResultQueue = (state = {}, action) => {
             });
 
         case 'DUEL_ANIMATION_COMPLETED':
-            console.log("Is this being updated?");
-            let duels = state.queue;
+            const duels = state.queue;
             duels[0].status = 'COMPLETED'
             return Object.assign({}, state, { queue: duels });
 

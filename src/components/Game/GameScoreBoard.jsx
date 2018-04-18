@@ -6,7 +6,7 @@ class GameScoreBoard extends React.Component {
     render(props) {
         return (
             <div style={Object.assign({ border: '1px solid grey', marginTop: '1em', marginBottom: '1.5em'}, this.props.style)}>
-                <div style={{ display: 'flex', justifyContent: 'center'}}>
+                <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '20px'}}>
                     <label style={{ paddingTop: '10px', fontSize: '1.8em' }}>
                         Score: <span style={{ color: 'green' }}>{this.props.gameState.score}</span>
                     </label>

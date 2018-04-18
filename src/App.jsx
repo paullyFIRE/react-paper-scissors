@@ -15,12 +15,10 @@ class App extends React.Component {
     componentDidMount() {
         this.fetchData('games/leaderboard', 'leaderboard');
         this.fetchData('games/all', 'games');
-
-        $(`#submit-modal`).modal();
     }
 
     fetchData(path, propertyName) {
-        let domain = process.env.NODE_ENV !== 'production' ? "http://159.65.21.186/" : "";
+        let domain = process.env.NODE_ENV !== 'production' ? "http://159.65.21.186/" : "";;
 
         fetch(domain + path)
         .then(response => response.json())
