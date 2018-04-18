@@ -23,9 +23,11 @@ const config = {
             heading: 'DOUBLE UP!',
             modalName: 'multiplier-modal'
         },
-        roundResult: {
-            heading: 'Round Result',
-            modalName: 'result-modal'
+        duelResult: {
+            heading: 'Duel Result',
+            modalName: 'result-modal',
+            initialDelay: 750,
+            closeDelay: 1250
         }
     }
 }

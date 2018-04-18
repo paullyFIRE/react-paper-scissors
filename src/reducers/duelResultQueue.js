@@ -1,4 +1,4 @@
-const roundPreviewQueue = (state = {}, action) => {
+const duelResultQueue = (state = {}, action) => {
     switch(action.type) {
         case 'ADD_ROUND_PREVIEW':
         case 'REMOVE_ROUND_PREVIEW':
@@ -7,4 +7,4 @@ const roundPreviewQueue = (state = {}, action) => {
     }
 };
 
-export default roundPreviewQueue;
+export default duelResultQueue;

@@ -3,7 +3,7 @@ import GamesModal from '/components/Modals/GamesModal';
 import LeaderboardModal from '/components/Modals/LeaderboardModal';
 import RulesModal from '/components/Modals/RulesModal';
 import ScoreSubmitModal from '/components/Modals/ScoreSubmitModal';
-import RoundResultModal from '/components/Modals/RoundResultModal';
+import DuelResultModal from '/components/Modals/DuelResultModal';
 import MultiplierModal from '/components/Modals/MultiplierModal';
 import GameArea from '/pages/Game';
 import About from '/pages/About';
@@ -42,7 +42,7 @@ class App extends React.Component {
                     <RulesModal />
                     <ScoreSubmitModal />
                     <MultiplierModal />
-                    <RoundResultModal />
+                    <DuelResultModal />
                 </div>
             </BrowserRouter>
         );
