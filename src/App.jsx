@@ -1,14 +1,14 @@
 import React from 'react';
-import GamesModal from '/components/Modals/GamesModal';
+import { Route, BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import LeaderboardModal from '/components/Modals/LeaderboardModal';
+import GamesModal from '/components/Modals/GamesModal';
 import RulesModal from '/components/Modals/RulesModal';
 import ScoreSubmitModal from '/components/Modals/ScoreSubmitModal';
 import DuelResultModal from '/components/Modals/DuelResultModal';
 import MultiplierModal from '/components/Modals/MultiplierModal';
 import GameArea from '/pages/Game';
 import About from '/pages/About';
-import { Route, BrowserRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 class App extends React.Component {
 

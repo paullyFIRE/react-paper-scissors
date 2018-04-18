@@ -1,27 +1,26 @@
 const GameState = (state = {}, action) => {
     switch(action.type) {
-        //GAME SCOREBOARD/STATE CALLS
+        //GAME SCOREBOARD/STATE
         case 'MULTIPLIER_WON':
             return Object.assign({}, state, { 
                 multipliers: state.multipliers + 1,
                 score: state.score * 2
             });
+
         case 'ROUND_WON':
             return Object.assign({}, state, {
                 roundsWon: state.roundsWon + 1
             });
+            
         case 'ROUND_LOST':
             return Object.assign({}, state, {
                 roundsLost: state.roundsLost + 1
             });
+
         case 'GAME_OVER':
             return Object.assign({}, state, {
                 roundsLost: state.roundsLost + 1
             });
-        case 'STARTED':
-            return Object.assign({}, state, { started: true });
-        case 'SUBMIT':
-            break;
 
         //GAME ROUND CALLS
         case 'POINT_WON':
@@ -32,6 +31,7 @@ const GameState = (state = {}, action) => {
                 score: state.score + 1000,
                 rounds: rounds
             });
+
         case 'POINT_DRAW':
             rounds = state.rounds;
             rounds[0].pointsDraw++;
@@ -40,6 +40,7 @@ const GameState = (state = {}, action) => {
                 score: state.score + 250,
                 rounds: rounds
             });
+
         case 'POINT_LOST':
             rounds = state.rounds;
             rounds[0].pointsCPU++;
@@ -47,6 +48,7 @@ const GameState = (state = {}, action) => {
             return Object.assign({}, state, {
                 rounds: rounds
             });
+
         case 'NEW_ROUND':
             return Object.assign({}, state, {
                 rounds: [{
@@ -57,7 +59,7 @@ const GameState = (state = {}, action) => {
                 }, ...state.rounds]
             });
 
-        // Game reset call
+        // Game Control
         case 'RESET_GAME':
             return Object.assign({}, state, {
                 started: false,
@@ -72,6 +74,13 @@ const GameState = (state = {}, action) => {
                     pointsDraw: 0
                 }]
             });
+
+        case 'STARTED':
+            return Object.assign({}, state, { started: true });
+
+        case 'SUBMIT':
+            return state;
+            
         default:
             return state;
     }

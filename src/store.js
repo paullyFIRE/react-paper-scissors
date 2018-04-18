@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import game from './reducers/gameState';
-import api from './reducers/API';
 import duelResultQueue from './reducers/duelResultQueue';
 import mwlogic from './model/middleware-logic';
+import game from './reducers/gameState';
+import api from './reducers/API';
 
 const defaultState = {
     game: {

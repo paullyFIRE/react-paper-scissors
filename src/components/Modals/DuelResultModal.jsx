@@ -9,10 +9,6 @@ import paperSvg from '../../images/paper.svg';
 import scissorsSvg from '../../images/scissors.svg';
 
 class DuelResultModal extends React.Component {
-    constructor() {
-        super()
-    }
-
     animate() {
         const images = {
             "rock": rockSvg,
@@ -50,7 +46,7 @@ class DuelResultModal extends React.Component {
 
                     setTimeout(() => {
                         $(`#${this.props.modal.modalName}`).modal("hide");
-                        $('.modal-backdrop.in').css('opacity', '0');
+                        $('.modal-backdrop.in').css('opacity', '0.1');
                         this.resetComponent();
                     }, this.props.modal.closeDelay);
                 }

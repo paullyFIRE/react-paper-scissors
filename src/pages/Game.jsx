@@ -58,10 +58,7 @@ class GameArea extends React.Component {
 const mapState = (state) => {
     return {
         gameState: {
-            started: state.game.started,
             statusText: state.game.statusText,
-            score: state.game.score,
-            multipliers: state.game.multipliers,
             currentRound: state.game.rounds[0],
             roundLimit: config.roundLimit
         }

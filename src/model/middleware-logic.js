@@ -1,8 +1,7 @@
-import { play } from './game';
+import { play } from './game-logic';
 import config from '../config';
 
 const mwlogic = (store) => next => action => {
-    //GAME CONTROL BUTTONS
     if(action.type == "GAME_CONTROL_ENTRY" && action.data) {
         const roundResponse = play(action.data);
 
@@ -11,7 +10,10 @@ const mwlogic = (store) => next => action => {
             computer: roundResponse.computer,
             result: roundResponse.result,
         }});
+
+        next(action);
     } else if(action.type == "ADD_DUEL") {
+        //Noticable opacity delay on modal-background if not applied prior to modal toggle
         setTimeout(() => {
             $('.modal-backdrop.in').css('opacity', '1');
         }, 1);
@@ -35,8 +37,7 @@ const mwlogic = (store) => next => action => {
         };
 
         next(action);
-    }
-    else if (action.type == "GAME_CONTROL_MULTIPLIER" && action.data) {
+    } else if (action.type == "GAME_CONTROL_MULTIPLIER" && action.data) {
         //ACTION HANDLER HERE FOR THE MULTIPLER GAMEPLAY
         
 
@@ -75,13 +76,19 @@ const mwlogic = (store) => next => action => {
             store.dispatch({ type: 'NEW_ROUND'});
         }
 
+    } else if (action.type == 'GAME_OVER') {
+        next(action);
+
     } else if (action.type == 'SUBMIT_SCORE') {
         $(`#${config.modals.scoreSubmit.modalName}`).modal("show");
+
     } else if (action.type == 'RESET_GAME') {
         store.dispatch({ type: 'RESET_PREVIEW_QUEUE' });
         next(action);
+
     } else {
-        return next(action);
+        next(action);
+        
     }
 };
 
