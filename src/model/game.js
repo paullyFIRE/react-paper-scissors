@@ -4,12 +4,12 @@ export const play = (playerChoice) => {
 
     if(playerChoice !== computer) {
         if(evaluateWinner(playerChoice, computer)) {
-            return 'WIN';
+            return { computer: computer, result: 'WON' };
         } else {
-            return 'LOSE';
+            return { computer: computer, result: 'LOST' };;
         }
     } else {
-        return 'DRAW';
+        return { computer: computer, result: 'DREW' };;
     }
 }
 

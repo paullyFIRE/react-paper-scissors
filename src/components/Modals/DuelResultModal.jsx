@@ -13,7 +13,7 @@ class DuelResultModal extends React.Component {
         super()
     }
 
-    componentDidMount() {
+    animate() {
         const images = {
             "rock": rockSvg,
             "paper": paperSvg,
@@ -24,10 +24,6 @@ class DuelResultModal extends React.Component {
         const computerOption = this.props.duelState.computer;
 
         setTimeout(() => {
-            $('.modal-backdrop.in').css('opacity', '1');
-        }, 10);
-
-        setTimeout(() => {
             for(let a = 0; a < 3; a++){
                 if(a == 2) {
                     $("#player-hand").animate({marginBottom: '+=140', marginLeft: '+=5'}, 340 + Math.floor(Math.random() * 40), function() {
@@ -36,7 +32,6 @@ class DuelResultModal extends React.Component {
                     });
                     $("#computer-hand").animate({marginBottom: '+=140', marginLeft: '+=5'}, 340 + Math.floor(Math.random() * 40), function() {
                         $("#computer-hand").attr("src", images[computerOption]);
-                        $('.duelModalTitle h2').css("display", "block");
                     });
                 } else {
                     $("#player-hand").animate({marginBottom: '+=140', marginLeft: '+=5'}, 380);
@@ -47,6 +42,7 @@ class DuelResultModal extends React.Component {
                 $("#player-hand").animate({marginBottom: '-=140', marginLeft: '-=5'}, 120);
             }
 
+            //Inverval checking for animation finish
             let animationFinishCheck = setInterval(() => {
                 if( !$(`#player-hand`).is(':animated') ) {
                     clearInterval(animationFinishCheck);
@@ -55,19 +51,34 @@ class DuelResultModal extends React.Component {
                     setTimeout(() => {
                         $(`#${this.props.modal.modalName}`).modal("hide");
                         $('.modal-backdrop.in').css('opacity', '0');
+                        this.resetComponent();
                     }, this.props.modal.closeDelay);
                 }
             }, 200)
         }, this.props.modal.initialDelay);
     }
 
+    resetComponent() {
+        $("#player-hand").attr("src", rockSvg);
+        $("#computer-hand").attr("src", rockSvg);
+        $('.duelModalTitle h2').css("display", "none");
+    }
+
+    componentDidMount() {
+        $(`#${this.props.modal.modalName}`).on('shown.bs.modal', (event) => {
+            this.animate();
+        });
+    }
+
     render() {
+        
+
         return (
             <Modal modalName={this.props.modal.modalName}>
                 <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', height: '300px'}}>
 
                 <div className="duelModalTitle" style={{ display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', height: '200' }}>
-                    <h2 style={{ display: 'none' }}>You <strong style={{ color: 'green' }}>{this.props.duelState.result}</strong>!</h2>
+                    <h2 style={{ display: 'none' }}>You <strong style={{ color: 'green' }}>{this.props.duelState ? this.props.duelState.result : ""}</strong>!</h2>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '200px'}}>
@@ -87,7 +98,7 @@ class DuelResultModal extends React.Component {
 const mapState = (state) => {
     return {
         modal: config.modals.duelResult,
-        duelState: state.duelResultQueue[0]
+        duelState: state.duelResultQueue.queue[0] || null
     };
 };
 

@@ -15,8 +15,6 @@ class App extends React.Component {
     componentDidMount() {
         this.fetchData('games/leaderboard', 'leaderboard');
         this.fetchData('games/all', 'games');
-
-        $("#result-modal").modal();
     }
 
     fetchData(path, propertyName) {

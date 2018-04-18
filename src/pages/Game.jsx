@@ -19,7 +19,7 @@ class GameArea extends React.Component {
         } else if (event.nativeEvent.srcElement.value == "RESET") {
             this.props.dispatch("RESET_GAME");
         } else {
-            this.props.dispatch("GAME_CONTROL_MAIN", event.nativeEvent.srcElement.alt)
+            this.props.dispatch("GAME_CONTROL_ENTRY", event.nativeEvent.srcElement.alt)
         }
     }
     
@@ -31,11 +31,10 @@ class GameArea extends React.Component {
 
                         <GameHeaderControls eventHandler={this.gameEventHandler}/>
 
-                        {this.props.gameState.started ? null :
-                            <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                                <h2>Hit a Button to Begin</h2>
-                            </div>
-                        }
+                        
+                        <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+                            <h2>{this.props.gameState.statusText}</h2>
+                        </div>
 
                         <GameScoreBoard />
 
@@ -60,6 +59,7 @@ const mapState = (state) => {
     return {
         gameState: {
             started: state.game.started,
+            statusText: state.game.statusText,
             score: state.game.score,
             multipliers: state.game.multipliers,
             currentRound: state.game.rounds[0],

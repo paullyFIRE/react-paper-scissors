@@ -7,6 +7,7 @@ import mwlogic from './model/middleware-logic';
 const defaultState = {
     game: {
         started: false,
+        statusText: 'Hit a Button to Begin!',
         score: 0,
         roundsWon: 0,
         roundsLost: 0,
@@ -24,19 +25,14 @@ const defaultState = {
         leaderboard: {},
         games: {}
     },
-    duelResultQueue: [{
-        id: 1,
-        status: 'PENDING',
-        player: 'paper',
-        computer: 'rock',
-        result: 'WON'
-    }]
+    duelResultQueue: {
+        queue: []
+    }
 };
 
 const logger = store => next => action => {
     if(action.type !== 'DATA_RECEIVED' && action.type !== 'GAME_CONTROL_MAIN') {
         console.log('dispatching', action);
-        console.log('prev state', store.getState());
         let result = next(action);
         console.log('next state', store.getState());
         return result;
