@@ -85,6 +85,8 @@ const mwlogic = (store) => next => action => {
         store.dispatch({ type: 'POST_GAME', data: {
             username: action.username,
             score: state.game.score,
+            roundsWon: state.game.roundsWon,
+            roundsLost: state.game.roundsLost
         }});
 
         next(action);
