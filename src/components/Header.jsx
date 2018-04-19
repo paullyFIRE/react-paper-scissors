@@ -4,46 +4,29 @@ import LinkButton from './Buttons/LinkButton';
 import { Link } from 'react-router-dom';
 import config from '../config';
 
+import styles from './Header.scss';
+
 class Header extends React.Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
     }
 
-    render (props) {
+    render () {
         return (
-            <div style={style.header}>
+            <div className='header'>
                 <div>
                     <Link to='/'>
-                        <h1 style={style.title}>{config.title}</h1>
+                        <h1 className="title">{config.title}</h1>
                     </Link>
                 </div>
-                <div style={{ display: 'flex' }}>
-                    <ModalButton style={style.button} linkModal={config.modals.leaderboard}/>
-                    <ModalButton style={style.button} linkModal={config.modals.games}/>
-                    <Link to={location.pathname == '/' ? '/about' : '/'}>
-                        <LinkButton style={style.button}>{location.pathname == '/' ? 'About' : 'Home'}</LinkButton>
-                    </Link>
+                <div className='button-wrapper'>
+                    <ModalButton  linkModal={config.modals.leaderboard}/>
+                    <ModalButton  linkModal={config.modals.games}/>
+                    <LinkButton >{location.pathname == '/' ? 'About' : 'Home'}</LinkButton>
                 </div>
             </div>
         );
     }
 }
-
-const style = {
-    header: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        backgroundColor: '#2980b9',
-        textAlign: 'center'
-    },
-    title: {
-        fontSize: '45px',
-        color: 'white'
-    },
-    button: {
-        margin: '5px 25px 5px 0'
-    }
-};
 
 export default Header;
