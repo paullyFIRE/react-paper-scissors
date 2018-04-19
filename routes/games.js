@@ -19,14 +19,14 @@ router.post('/post', (req, res) => {
 
 router.get('/all', (req, res) => {
     const query = db.getGames();
-    query.then(resp => res.send(resp))
-    .catch(err => res.send(err));
+    query.then(data => res.send({"success": 1, data: data}))
+    .catch(err => res.send({ "success": 0 }));
 });
 
 router.get('/leaderboard', (req, res) => {
     const query = db.getLeaderboard();
-    query.then(resp => res.send(resp))
-    .catch(err => res.send(err));
+    query.then(data => res.send({"success": 1, data: data}))
+    .catch(err => res.send({ "success": 0 }));
 });
 
 module.exports = router;

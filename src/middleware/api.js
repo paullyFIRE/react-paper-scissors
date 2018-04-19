@@ -3,12 +3,16 @@ import config from '../config';
 
 const api = (store) => next => action => {
     if(action.type == 'FETCH_DATA') {
-        fetchData(config.modals.games.apiPath, { method: 'GET' }, data => {
-            store.dispatch({ type: 'DATA_RECEIVED', name: config.modals.games.storeName, data }) 
+        fetchData(config.modals.games.apiPath, { method: 'GET' }, payload => {
+            if(data.success == 1) {
+                store.dispatch({ type: 'DATA_RECEIVED', name: config.modals.games.storeName, data: payload.data });
+            }
         });
 
-        fetchData(config.modals.leaderboard.apiPath, { method: 'GET' }, data => {
-            store.dispatch({ type: 'DATA_RECEIVED', name: config.modals.leaderboard.storeName, data }) 
+        fetchData(config.modals.leaderboard.apiPath, { method: 'GET' }, payload => {
+            if(data.success == 1) {
+                store.dispatch({ type: 'DATA_RECEIVED', name: config.modals.leaderboard.storeName, data: payload.data });
+            }
         });
 
     } else if (action.type == 'POST_GAME') {

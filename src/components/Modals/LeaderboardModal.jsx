@@ -8,8 +8,8 @@ class LeaderboardModal extends React.Component {
         super()
     }
 
-    tableRows() {
-        if(this.props.data) {
+    tableRows(apiData) {
+        if(Object.keys(apiData).length > 0) {
             let data = [];
             let leaderBoardPosition = 1;
 
@@ -24,6 +24,8 @@ class LeaderboardModal extends React.Component {
                 leaderBoardPosition++;
             }
             return data;
+        } else {
+            return <p>No data available... sorry. It's probably the database.</p>;
         }
     }
 
@@ -36,7 +38,7 @@ class LeaderboardModal extends React.Component {
                 </div>
 
                 <div className="modal-body">
-                    {this.tableRows()}
+                    {this.tableRows(this.props.data)}
                 </div>
 
                 <div className="modal-footer">

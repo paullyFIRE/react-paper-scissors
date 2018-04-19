@@ -9,7 +9,7 @@ class GamesModal extends React.Component {
     }
 
     tableRows(apiData) {
-        if(apiData) {
+        if(Object.keys(apiData).length > 0) {
             let data = [];
 
             for(let game in this.props.data) {
@@ -21,6 +21,8 @@ class GamesModal extends React.Component {
                     </p>);
             }
             return data;
+        } else {
+            return <p>No data available... sorry. It's probably the database.</p>;
         }
     }
 
