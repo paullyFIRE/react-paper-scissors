@@ -7,13 +7,13 @@ const config = {
             heading: "Recent Games",
             modalName: "games-modal",
             apiPath: 'games/all',
-            stateStore: 'games'
+            storeName: 'games'
         },
         leaderboard: {
             heading: "Leaderboard",
             modalName: "leader-modal",
             apiPath: 'games/leaderboard',
-            stateStore: 'leaderboard'
+            storeName: 'leaderboard'
         },
         rules: {
             heading: 'How To Play',

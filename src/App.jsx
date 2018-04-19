@@ -13,19 +13,7 @@ import About from '/pages/About';
 class App extends React.Component {
 
     componentDidMount() {
-        this.fetchData('games/leaderboard', 'leaderboard');
-        this.fetchData('games/all', 'games');
-    }
-
-    fetchData(path, propertyName) {
-        let domain = process.env.NODE_ENV !== 'production' ? "http://159.65.21.186/" : "";;
-
-        fetch(domain + path)
-        .then(response => response.json())
-        .then(data => {
-            this.props.dataReceived(propertyName, data);
-        })
-        .catch(err => console.log(err));
+        this.props.fetchData();
     }
 
     render() {
@@ -39,8 +27,8 @@ class App extends React.Component {
                     <GamesModal />
                     <RulesModal />
                     <ScoreSubmitModal />
-                    <MultiplierModal />
                     <DuelResultModal />
+                    <MultiplierModal />
                 </div>
             </BrowserRouter>
         );
@@ -49,8 +37,7 @@ class App extends React.Component {
 
 const mapDispatch = (dispatch) => {
     return {
-        dataReceived(name, data) { 
-            dispatch({ type: 'DATA_RECEIVED', name, data }) }
+        fetchData() { dispatch({ type: 'FETCH_DATA' }) },
     };
 };
 

@@ -3,6 +3,7 @@ import duelResultQueue from './reducers/duelResultQueue';
 import mwlogic from './model/middleware-logic';
 import game from './reducers/gameState';
 import api from './reducers/API';
+import middleAPI from './middleware/api';
 
 let random = (seed) => {
     return Math.floor(Math.random() * seed);
@@ -48,6 +49,6 @@ const logger = store => next => action => {
 };
 
 const reducers = combineReducers({ game, api, duelResultQueue });
-const store = createStore(reducers, defaultState, applyMiddleware(logger, mwlogic));
+const store = createStore(reducers, defaultState, applyMiddleware(logger, mwlogic, middleAPI));
 
 module.exports = { store };

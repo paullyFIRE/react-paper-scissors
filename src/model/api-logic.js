@@ -1,9 +1,6 @@
 export const fetchData = (path, request, callback) => {
-    let domain = process.env.NODE_ENV == 'production' ? "http://159.65.21.186/" : "http://localhost/";
-
-    console.log(request);
-    console.log(domain + path);
-
+    let domain = process.env.NODE_ENV !== 'production' ? "http://159.65.21.186/" : "";
+    
     if(request.method == 'GET') {
         fetch(domain + path)
         .then(response => response.json())
