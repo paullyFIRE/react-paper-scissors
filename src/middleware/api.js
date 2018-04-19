@@ -4,13 +4,13 @@ import config from '../config';
 const api = (store) => next => action => {
     if(action.type == 'FETCH_DATA') {
         fetchData(config.modals.games.apiPath, { method: 'GET' }, payload => {
-            if(data.success == 1) {
+            if(payload.success == 1) {
                 store.dispatch({ type: 'DATA_RECEIVED', name: config.modals.games.storeName, data: payload.data });
             }
         });
 
         fetchData(config.modals.leaderboard.apiPath, { method: 'GET' }, payload => {
-            if(data.success == 1) {
+            if(payload.success == 1) {
                 store.dispatch({ type: 'DATA_RECEIVED', name: config.modals.leaderboard.storeName, data: payload.data });
             }
         });
@@ -51,7 +51,7 @@ const api = (store) => next => action => {
                 setTimeout(() => {
                         $modal.modal("hide");
                         $modalButton.removeAttr("disabled");
-                }, config.modals.scoreSubmit.closeDelay + 1500);
+                }, config.modals.scoreSubmit.closeDelay + 1000);
 
                 store.dispatch({ type: 'FETCH_DATA' });
 

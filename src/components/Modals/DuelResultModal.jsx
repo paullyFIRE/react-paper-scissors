@@ -62,8 +62,6 @@ class DuelResultModal extends React.Component {
     }
 
     componentDidMount() {
-        $(`#${this.props.modal.modalName}`).modal();
-
         $(`#${this.props.modal.modalName}`).on('shown.bs.modal', (event) => {
             this.animate();
         });
