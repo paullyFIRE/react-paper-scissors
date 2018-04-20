@@ -7,6 +7,7 @@ import RulesModal from '/components/Modals/RulesModal';
 import ScoreSubmitModal from '/components/Modals/ScoreSubmitModal';
 import DuelResultModal from '/components/Modals/DuelResultModal';
 import MultiplierModal from '/components/Modals/MultiplierModal';
+import ConfirmModal from '/components/Modals/ConfirmModal';
 import GameArea from '/pages/Game';
 import About from '/pages/About';
 
@@ -29,6 +30,7 @@ class App extends React.Component {
                     <ScoreSubmitModal />
                     <DuelResultModal />
                     <MultiplierModal />
+                    <ConfirmModal />
                 </div>
             </BrowserRouter>
         );

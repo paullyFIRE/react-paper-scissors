@@ -33,6 +33,10 @@ const config = {
             modalName: 'result-modal',
             initialDelay: 750,
             closeDelay: 1250
+        },
+        confirmModal: {
+            heading: 'Confirmation',
+            modalName: 'confirm-modal',
         }
     }
 }
