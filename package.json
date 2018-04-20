@@ -7,15 +7,18 @@
     "prebuild": "shx rm -rf dist/*",
     "build": "parcel build src/index.html",
     "postbuild": "gzip-all \"dist/*.*\"",
-    "dev": "parcel src/index.html --open"
+    "dev": "parcel src/index.html --open",
+    "lint": "eslint --ignore-path .gitignore . --ext js,jsx,scss",
+    "lint:fix": "eslint --ignore-path .gitignore . --ext js,jsx,scss"
   },
   "author": "Paul David Patterson <pddpatterson@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "gzip-all": "^1.0.0",
     "mysql": "^2.15.0",
+    "prettier": "^1.12.1",
+    "prop-types": "^15.6.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-router": "^4.2.0",
@@ -23,13 +26,17 @@
   },
   "devDependencies": {
     "autoprefixer": "^8.3.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "gzip-all": "^1.0.0",
     "node-sass": "^4.8.3",
     "parcel-bundler": "^1.7.0",
     "postcss-modules": "^1.1.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
-    "shx": "^0.2.2",
-    "surge": "^0.20.1"
+    "shx": "^0.2.2"
   },
   "browserslist": [
     "> 1%",
