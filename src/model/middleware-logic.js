@@ -14,11 +14,6 @@ const mwlogic = (store) => next => action => {
 
         next(action);
     } else if(action.type == "ADD_DUEL") {
-        //Noticable opacity delay on modal-background if not applied prior to modal toggle
-        setTimeout(() => {
-            $('.modal-backdrop.in').css('opacity', '1');
-        }, 1);
-
         $(`#${config.modals.duelResult.modalName}`).modal({ backdrop: "static" });
 
         next(action);

@@ -22,7 +22,7 @@ const config = {
         scoreSubmit: {
             heading: 'Submit Your Score!',
             modalName: 'submit-modal',
-            closeDelay: 1500
+            closeDelay: 1000
         },
         multiplier: {
             heading: 'DOUBLE UP!',

@@ -11,17 +11,12 @@
   },
   "author": "Paul David Patterson <pddpatterson@gmail.com>",
   "license": "ISC",
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ],
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "gzip-all": "^1.0.0",
     "mysql": "^2.15.0",
     "react": "^16.3.1",
-    "react-css-modules": "^4.7.2",
     "react-dom": "^16.3.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
@@ -30,9 +25,14 @@
     "autoprefixer": "^8.3.0",
     "node-sass": "^4.8.3",
     "parcel-bundler": "^1.7.0",
+    "postcss-modules": "^1.1.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "shx": "^0.2.2",
     "surge": "^0.20.1"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
