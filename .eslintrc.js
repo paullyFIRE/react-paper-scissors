@@ -1,9 +1,9 @@
 module.exports = {
-  extends: ['plugin:prettier/recommended', 'plugin:react/recommended'],
-  plugins: ['react', 'prettier'],
+  extends: ["prettier/react"],
+  plugins: ["prettier"],
   parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
+    ecmaVersion: 8,
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true
     },
@@ -14,6 +14,7 @@ module.exports = {
     }
   },
   rules: {
-    'prettier/prettier': ['error', { singleQuote: true }]
+    "prettier/prettier": ["error", { singleQuote: true, printWidth: 140 }],
+    "max-len": ["error", { code: 140, ignoreUrls: true }]
   }
 };

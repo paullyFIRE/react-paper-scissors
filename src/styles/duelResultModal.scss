@@ -1,50 +1,50 @@
 .dialog {
-    position: absolute;
-    width: 85%;
-    max-width: 650px;
-    top: 20%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  width: 85%;
+  max-width: 650px;
+  top: 20%;
+  transform: translate(-50%, -50%);
 }
 
 .modalBody {
-    display: flex;
-    flex-direction: column; 
-    height: 300px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
 }
 
 .title {
-    display: flex; 
-    flex: 1; 
-    justify-content: center; 
-    align-items: center; 
-    height: 400px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
 }
 
 .title h2 {
-    display: none;
-    font-size: 4em;
+  display: none;
+  font-size: 4em;
 }
 
 .title strong {
-    color: green;
+  color: green;
 }
 
 .animationArea {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
 }
 
 .animationArea div {
-    position: relative;
-    width: 200px;
+  position: relative;
+  width: 200px;
 }
 
 .animationArea div:first-child img {
-    transform: rotate(75deg);
+  transform: rotate(75deg);
 }
 
 .animationArea div:last-child img {
-    transform: rotate(285deg) scaleX(-1);
+  transform: rotate(285deg) scaleX(-1);
 }

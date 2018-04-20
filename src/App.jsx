@@ -12,35 +12,36 @@ import GameArea from '/pages/Game';
 import About from '/pages/About';
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.fetchData();
+  }
 
-    componentDidMount() {
-        this.props.fetchData();
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Route exact path="/" component={GameArea} />
+          <Route exact path="/about" component={About} />
+
+          <LeaderboardModal />
+          <GamesModal />
+          <RulesModal />
+          <ScoreSubmitModal />
+          <DuelResultModal />
+          <MultiplierModal />
+          <ConfirmModal />
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    fetchData() {
+      dispatch({ type: 'FETCH_DATA' });
     }
-
-    render() {
-        return (
-            <BrowserRouter>
-                <div>
-                    <Route exact path='/' component={GameArea} />
-                    <Route exact path='/about' component={About} />
-        
-                    <LeaderboardModal />
-                    <GamesModal />
-                    <RulesModal />
-                    <ScoreSubmitModal />
-                    <DuelResultModal />
-                    <MultiplierModal />
-                    <ConfirmModal />
-                </div>
-            </BrowserRouter>
-        );
-    };
-};
-
-const mapDispatch = (dispatch) => {
-    return {
-        fetchData() { dispatch({ type: 'FETCH_DATA' }) },
-    };
+  };
 };
 
 export default connect(null, mapDispatch)(App);
