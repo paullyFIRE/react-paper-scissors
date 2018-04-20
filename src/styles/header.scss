@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #2980b9;
+    text-align: center;
+}
+
+.title {
+    font-size: 45px;
+    color: white;
+}
+
+.buttonWrapper {
+    display: flex;
+}
+
+.buttonWrapper > * {
+    margin: 5px 25px 0 0;
+}

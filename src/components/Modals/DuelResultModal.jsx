@@ -8,6 +8,8 @@ import rockSvg from '../../images/rock.svg';
 import paperSvg from '../../images/paper.svg';
 import scissorsSvg from '../../images/scissors.svg';
 
+import styles from '../../styles/duelResultModal.scss';
+
 class DuelResultModal extends React.Component {
 
     animate() {
@@ -20,23 +22,27 @@ class DuelResultModal extends React.Component {
         const playerOption = this.props.duelState.player;
         const computerOption = this.props.duelState.computer;
 
+        const $playerHand = $("#player-hand");
+        const $computerHand = $("#computer-hand");
+
         setTimeout(() => {
             for(let a = 0; a < 3; a++){
                 if(a == 2) {
-                    $("#player-hand").animate({marginBottom: '+=140', marginLeft: '+=5'}, 340 + Math.floor(Math.random() * 40), function() {
-                        $("#player-hand").attr("src", images[playerOption]);
-                        $('.duelModalTitle h2').css("display", "block");
+                    $playerHand.animate({marginBottom: '+=140', marginLeft: '+=5'}, 340 + Math.floor(Math.random() * 40), function() {
+                        $playerHand.attr("src", images[playerOption]);
+                        //reveal status text from display:none
+                        $(`.${styles.title} h2`).css("display", "block");
                     });
-                    $("#computer-hand").animate({marginBottom: '+=140', marginLeft: '+=5'}, 340 + Math.floor(Math.random() * 40), function() {
-                        $("#computer-hand").attr("src", images[computerOption]);
+                    $computerHand.animate({marginBottom: '+=140', marginLeft: '+=5'}, 340 + Math.floor(Math.random() * 40), function() {
+                        $computerHand.attr("src", images[computerOption]);
                     });
                 } else {
-                    $("#player-hand").animate({marginBottom: '+=140', marginLeft: '+=5'}, 380);
-                    $("#computer-hand").animate({marginBottom: '+=140', marginLeft: '+=5'}, 380);
+                    $playerHand.animate({marginBottom: '+=140', marginLeft: '+=5'}, 380);
+                    $computerHand.animate({marginBottom: '+=140', marginLeft: '+=5'}, 380);
                 }
     
-                $("#computer-hand").animate({marginBottom: '-=140', marginLeft: '-=5'}, 120);
-                $("#player-hand").animate({marginBottom: '-=140', marginLeft: '-=5'}, 120);
+                $computerHand.animate({marginBottom: '-=140', marginLeft: '-=5'}, 120);
+                $playerHand.animate({marginBottom: '-=140', marginLeft: '-=5'}, 120);
             }
 
             //Inverval checking for animation finish
@@ -47,8 +53,6 @@ class DuelResultModal extends React.Component {
 
                     setTimeout(() => {
                         $(`#${this.props.modal.modalName}`).modal("hide");
-                        $('.modal-backdrop.in').css('opacity', '0.1');
-                        this.resetComponent();
                     }, this.props.modal.closeDelay);
                 }
             }, 200)
@@ -58,33 +62,49 @@ class DuelResultModal extends React.Component {
     resetComponent() {
         $("#player-hand").attr("src", rockSvg);
         $("#computer-hand").attr("src", rockSvg);
-        $('.duelModalTitle h2').css("display", "none");
+        $(`.${styles.title} h2`).css("display", "none");
     }
 
     componentDidMount() {
-        $(`#${this.props.modal.modalName}`).on('shown.bs.modal', (event) => {
+        const $modal = $(`#${this.props.modal.modalName}`);
+        
+        $modal.on('show.bs.modal', (event) => {
+            setTimeout(() => {
+                $('.modal-backdrop.in').css('opacity', '1');
+            }, 1);
+        });
+
+        $modal.on('shown.bs.modal', (event) => {
             this.animate();
+        });
+
+        $modal.on('hide.bs.modal', (event) => {
+            //Smoothens Background Opacity Fade-In on modal hide
+            $('.modal-backdrop.in').css('opacity', '0.1');
+        });
+
+        $modal.on('hidden.bs.modal', (event) => {
+            this.resetComponent();
         });
     }
 
     render() {
         return (
-            <Modal modalName={this.props.modal.modalName} dialogStyle={{ position: 'absolute', width: '85%', maxWidth: '650px', top: '40%', left: '50%', transform: 'translate(-50%, -50%)'}}>
-                <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', height: '300px'}}>
-
-                <div className="duelModalTitle" style={{ display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
-                    <h2 style={{ display: 'none' }}>You <strong style={{ color: 'green' }}>{this.props.duelState ? this.props.duelState.result : ""}</strong>!</h2>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '200px'}}>
-                    <div id='player-control'>
-                        <img style={{ position: 'relative', transform: 'rotate(75deg)', width: '200px'}} id='player-hand' src={rockSvg} />
+            <Modal modalName={this.props.modal.modalName} dialogStyle={styles.dialog}>
+                <div className={styles.modalBody}>
+                    <div className={styles.title}>
+                        <h2>You <strong>{this.props.duelState ? this.props.duelState.result : ""}</strong>!</h2>
                     </div>
-                    <div id='computer-control'>
-                        <img style={{ position: 'relative', transform: 'rotate(285deg) scaleX(-1)', width: '200px'}} id='computer-hand' src={rockSvg} />
+
+                    <div className={styles.animationArea}>
+                        <div>
+                            <img id='player-hand' src={rockSvg} />
+                        </div>
+                        <div>
+                            <img id='computer-hand' src={rockSvg} />
+                        </div>
                     </div>
                 </div>
-            </div>
             </Modal>
         );
     }
