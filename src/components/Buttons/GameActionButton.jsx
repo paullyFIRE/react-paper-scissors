@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class GameActionButton extends React.Component {
   render(props) {
@@ -9,6 +10,13 @@ class GameActionButton extends React.Component {
     );
   }
 }
+
+GameActionButton.propTypes = {
+  src: PropTypes.string,
+  eventHandler: PropTypes.func,
+  style: PropTypes.object,
+  value: PropTypes.string
+};
 
 const styles = {
   gameButton: {

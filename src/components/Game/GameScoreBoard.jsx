@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from '../../config';
 
@@ -39,10 +40,14 @@ class GameScoreBoard extends React.Component {
   }
 }
 
+GameScoreBoard.propTypes = {
+  gameState: PropTypes.object,
+  style: PropTypes.object
+};
+
 const mapState = state => {
   return {
     gameState: {
-      started: state.game.started,
       score: state.game.score,
       roundsWon: state.game.roundsWon,
       roundsLost: state.game.roundsLost,

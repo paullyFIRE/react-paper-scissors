@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ModalButton extends React.Component {
   render(props) {
@@ -15,5 +16,10 @@ class ModalButton extends React.Component {
     );
   }
 }
+
+ModalButton.propTypes = {
+  linkModal: PropTypes.object,
+  style: PropTypes.string
+};
 
 export default ModalButton;

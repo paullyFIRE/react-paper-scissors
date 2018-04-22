@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from '../../config';
 import GameControls from '../Game/GameControls';
@@ -110,6 +111,12 @@ class DuelResultModal extends React.Component {
     );
   }
 }
+
+DuelResultModal.propTypes = {
+  duelState: PropTypes.object,
+  animationCompleted: PropTypes.func,
+  modal: PropTypes.object
+};
 
 const mapState = state => {
   return {

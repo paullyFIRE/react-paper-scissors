@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ModalButton from '../Buttons/ModalButton';
 import ControlButton from '../Buttons/ControlButton';
 import config from '../../config';
@@ -27,5 +28,9 @@ class GameHeaderControls extends React.Component {
     );
   }
 }
+
+GameHeaderControls.propTypes = {
+  eventHandler: PropTypes.func
+};
 
 export default GameHeaderControls;

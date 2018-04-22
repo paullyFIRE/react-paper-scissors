@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Modal from './Modal';
+import PropTypes from 'prop-types';
 import GameScoreBoard from '../Game/GameScoreBoard';
 import config from '../../config';
 
@@ -76,6 +77,10 @@ class ScoreSubmitModal extends React.Component {
     );
   }
 }
+
+ScoreSubmitModal.propTypes = {
+  postGame: PropTypes.func
+};
 
 const mapDispatch = dispatch => {
   return {

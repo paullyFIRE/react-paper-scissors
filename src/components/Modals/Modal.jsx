@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Modal extends React.Component {
   render(props) {
@@ -11,5 +12,11 @@ class Modal extends React.Component {
     );
   }
 }
+
+Modal.propTypes = {
+  modalName: PropTypes.string,
+  dialogStyle: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+};
 
 export default Modal;

@@ -3,10 +3,6 @@ import Modal from './Modal';
 import config from '../../config';
 
 class RulesModal extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <Modal modalName={config.modals.rules.modalName}>
@@ -19,7 +15,7 @@ class RulesModal extends React.Component {
 
         <div className="modal-body">
           <p>The aim is to get as high a score as possible, to get yourself onto the leaderboard!</p>
-          <p>For each first-to-5 round against the AI, you'll get points for the following:</p>
+          <p>For each first-to-5 round against the AI, you&apos;ll get points for the following:</p>
           <ul>
             <li>
               Winning a duel: <strong>1000 points</strong>
@@ -30,11 +26,11 @@ class RulesModal extends React.Component {
             <li>
               An extra <strong>1000 points</strong> per point difference against the opponent when you win!
             </li>
-            <li>E.g. if you win 5-3, you'll be awarded an extra 2000 points for the lead!</li>
+            <li>E.g. if you win 5-3, you&apos;ll be awarded an extra 2000 points for the lead!</li>
           </ul>
-          <p>After winning a round, you'll be able to play a best-of-1 round to double your score!</p>
-          <p>After losing 3 rounds to the AI, the game will be over and you'll be able to submit your high score.</p>
-          <p>You'll be able to submit your score at any time, but then all of your progress will be reset.</p>
+          <p>After winning a round, you&apos;ll be able to play a best-of-1 round to double your score!</p>
+          <p>After losing 3 rounds to the AI, the game will be over and you&apos;ll be able to submit your high score.</p>
+          <p>You&apos;ll be able to submit your score at any time, but then all of your progress will be reset.</p>
           <p>Good luck, and see you on the leaderboard!</p>
         </div>
 

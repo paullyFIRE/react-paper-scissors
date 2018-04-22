@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Layout from './Layout';
 import GameScoreBoard from '../components/Game/GameScoreBoard';
 import GameHeaderControls from '../components/Game/GameHeaderControls';
@@ -30,13 +31,26 @@ class GameArea extends React.Component {
           <div style={{ margin: '0 auto', width: '80vw', maxWidth: '1100px' }}>
             <GameHeaderControls eventHandler={this.gameEventHandler} />
 
-            <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center'
+              }}
+            >
               <h2>{this.props.gameState.statusText}</h2>
             </div>
 
             <GameScoreBoard />
 
-            <div style={{ display: 'flex', justifyContent: 'space-around', maxWidth: '650px', margin: '1.5em auto 1.5em auto' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                maxWidth: '650px',
+                margin: '1.5em auto 1.5em auto'
+              }}
+            >
               <label className="score-label">
                 Player Score: {this.props.gameState.currentRound.pointsPlayer} / {this.props.gameState.roundLimit}
               </label>
@@ -55,6 +69,11 @@ class GameArea extends React.Component {
     );
   }
 }
+
+GameArea.propTypes = {
+  gameState: PropTypes.object,
+  dispatch: PropTypes.func
+};
 
 const mapState = state => {
   return {

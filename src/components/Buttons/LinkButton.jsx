@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class LinkButton extends React.Component {
   render(props) {
@@ -12,5 +13,10 @@ class LinkButton extends React.Component {
     );
   }
 }
+
+LinkButton.propTypes = {
+  style: PropTypes.string,
+  children: PropTypes.string
+};
 
 export default LinkButton;

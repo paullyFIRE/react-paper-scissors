@@ -1,9 +1,10 @@
 import React from 'react';
 import Modal from './Modal';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from '../../config';
 
-class GamesModal extends React.Component {
+class ConfirmModal extends React.Component {
   render() {
     return (
       <Modal modalName={this.props.modal.modalName}>
@@ -36,6 +37,11 @@ class GamesModal extends React.Component {
   }
 }
 
+ConfirmModal.propTypes = {
+  modal: PropTypes.object,
+  confirm: PropTypes.func
+};
+
 const mapDispatch = dispatch => {
   return {
     confirm() {
@@ -50,4 +56,4 @@ const mapState = state => {
   };
 };
 
-export default connect(mapState, mapDispatch)(GamesModal);
+export default connect(mapState, mapDispatch)(ConfirmModal);

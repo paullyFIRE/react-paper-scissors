@@ -1,13 +1,10 @@
 import React from 'react';
 import Modal from './Modal';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from '../../config';
 
 class GamesModal extends React.Component {
-  constructor() {
-    super();
-  }
-
   tableRows(apiData) {
     if (Object.keys(apiData).length > 0) {
       let data = [];
@@ -23,7 +20,7 @@ class GamesModal extends React.Component {
       }
       return data;
     } else {
-      return <p>No data available... sorry. It's probably the database.</p>;
+      return <p>No data available... sorry. It&apos;s probably the database.</p>;
     }
   }
 
@@ -48,6 +45,11 @@ class GamesModal extends React.Component {
     );
   }
 }
+
+GamesModal.propTypes = {
+  modal: PropTypes.object,
+  data: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+};
 
 const mapState = state => {
   return {

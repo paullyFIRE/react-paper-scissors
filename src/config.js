@@ -24,10 +24,6 @@ const config = {
       modalName: 'submit-modal',
       closeDelay: 1000
     },
-    multiplier: {
-      heading: 'DOUBLE UP!',
-      modalName: 'multiplier-modal'
-    },
     duelResult: {
       heading: 'Duel Result',
       modalName: 'result-modal',
