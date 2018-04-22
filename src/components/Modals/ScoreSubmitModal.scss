@@ -6,10 +6,13 @@
   align-items: center;
 }
 
+.footerWrapper button:disabled {
+  opacity: 0.8;
+  cursor: auto;
+}
+
 .formWrapper {
-  display: flex;
-  justify-content: c enter;
-  align-items: center;
+  @extend .footerWrapper;
   flex-direction: column;
 }
 
@@ -19,4 +22,11 @@
   border-bottom: 2px solid $submitColorScheme;
   color: $submitColorScheme;
   width: auto;
+}
+
+.statusWrapper {
+  @extend .footerWrapper;
+  flex-wrap: nowrap;
+  font-size: 1.8em;
+  transition: background-color 150ms;
 }

@@ -22,7 +22,7 @@ const config = {
     scoreSubmit: {
       heading: 'Submit Your Score!',
       modalName: 'submit-modal',
-      closeDelay: 1000
+      closeDelay: 2000
     },
     duelResult: {
       heading: 'Duel Result',
