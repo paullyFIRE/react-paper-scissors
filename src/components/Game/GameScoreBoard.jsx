@@ -2,37 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from '../../config';
+import styles from './GameScoreBoard.scss';
 
 class GameScoreBoard extends React.Component {
   render(props) {
     return (
-      <div style={Object.assign({ border: '1px solid grey', marginTop: '1em', marginBottom: '1.5em' }, this.props.style)}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            paddingBottom: '20px'
-          }}
-        >
-          <label style={{ paddingTop: '10px', fontSize: '1.8em' }}>
-            Score: <span style={{ color: 'green' }}>{this.props.gameState.score}</span>
+      <div className={styles.wrapper}>
+        <div className={styles.scoreWrapper}>
+          <label>
+            Score: <span>{this.props.gameState.score}</span>
           </label>
         </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            padding: '0 5vw'
-          }}
-        >
+        <div className={styles.subScoreWrapper}>
           <label>
-            Rounds Won: <span style={{ color: 'green' }}>{this.props.gameState.roundsWon}</span>
+            Rounds Won: <span>{this.props.gameState.roundsWon}</span>
           </label>
           <label>
-            Rounds Lost: <span style={{ color: 'red' }}>{this.props.gameState.roundsLost}</span> / {this.props.gameState.lossLimit}
+            Rounds Lost: <span>{this.props.gameState.roundsLost}</span> / {this.props.gameState.lossLimit}
           </label>
           <label>
-            Multipliers Won: <span style={{ color: 'green' }}>{this.props.gameState.multipliers}</span>
+            Multipliers Won: <span>{this.props.gameState.multipliers}</span>
           </label>
         </div>
       </div>

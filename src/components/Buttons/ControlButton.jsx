@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class ControlButton extends React.Component {
   render(props) {
     return (
-      <button className="btn btn-lg" type="button" value={this.props.value} onClick={this.props.eventHandler} style={this.props.style}>
+      <button className="btn btn-lg" type="button" value={this.props.value} onClick={this.props.eventHandler}>
         {this.props.children}
       </button>
     );
@@ -14,7 +14,6 @@ class ControlButton extends React.Component {
 ControlButton.propTypes = {
   value: PropTypes.string,
   eventHandler: PropTypes.func,
-  style: PropTypes.object,
   children: PropTypes.string
 };
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './GameActionButton.scss';
 
 class GameActionButton extends React.Component {
-  render(props) {
+  render() {
     return (
-      <button className="btn" type="button" style={styles.gameButton} onClick={this.props.eventHandler}>
-        <img style={Object.assign({}, styles.gameButtonSVG, this.props.style)} src={this.props.src} alt={this.props.value} />
+      <button className={`${styles.gameActionButton} btn`} type="button" onClick={this.props.eventHandler}>
+        <img src={this.props.src} alt={this.props.value} />
       </button>
     );
   }
@@ -16,17 +17,6 @@ GameActionButton.propTypes = {
   eventHandler: PropTypes.func,
   style: PropTypes.object,
   value: PropTypes.string
-};
-
-const styles = {
-  gameButton: {
-    background: 'rgb(211, 211, 211)',
-    borderRadius: '5%'
-  },
-  gameButtonSVG: {
-    width: '18vw',
-    maxWidth: '200px'
-  }
 };
 
 export default GameActionButton;

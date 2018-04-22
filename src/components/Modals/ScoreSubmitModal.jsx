@@ -4,6 +4,7 @@ import Modal from './Modal';
 import PropTypes from 'prop-types';
 import GameScoreBoard from '../Game/GameScoreBoard';
 import config from '../../config';
+import styles from './ScoreSubmitModal.scss';
 
 class ScoreSubmitModal extends React.Component {
   constructor() {
@@ -34,41 +35,16 @@ class ScoreSubmitModal extends React.Component {
         </div>
 
         <div className="modal-body">
-          <GameScoreBoard style={{ border: 'none' }} />
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column'
-            }}
-          >
+          <GameScoreBoard />
+          <div className={styles.formWrapper}>
             <label>Enter Your Alias Here</label>
             <form>
-              <input
-                name="username"
-                text="text"
-                style={{
-                  fontSize: '25px',
-                  border: 'none',
-                  borderBottom: '2px solid red',
-                  color: 'red',
-                  width: 'auto'
-                }}
-                onChange={this.usernameChangeHandler}
-              />
+              <input name="username" text="text" onChange={this.usernameChangeHandler} />
             </form>
           </div>
         </div>
 
-        <div
-          className="modal-footer"
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
+        <div className={`${styles.footerWrapper} modal-footer`}>
           <button onClick={this.submitHandler} type="button" className="btn btn-lg">
             Submit Game
           </button>

@@ -10,7 +10,7 @@ import ScoreSubmitModal from '/components/Modals/ScoreSubmitModal';
 import DuelResultModal from '/components/Modals/DuelResultModal';
 import ConfirmModal from '/components/Modals/ConfirmModal';
 
-import GameArea from '/pages/Game';
+import GameRegion from '/pages/GameRegion';
 import About from '/pages/About';
 
 class App extends React.Component {
@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div>
-          <Route exact path="/" component={GameArea} />
+          <Route exact path="/" component={GameRegion} />
           <Route exact path="/about" component={About} />
 
           <LeaderboardModal />

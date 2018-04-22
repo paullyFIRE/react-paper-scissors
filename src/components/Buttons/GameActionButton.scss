@@ -1,0 +1,11 @@
+@import "../../global-styles.scss";
+
+.gameActionButton {
+  background: $actionButtonBackgroundColor;
+  border-radius: 5%;
+}
+
+.gameActionButton img {
+  width: 18vw;
+  max-width: 200px;
+}
