@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import LeaderboardModal from '/components/Modals/LeaderboardModal';
 import GamesModal from '/components/Modals/GamesModal';
 import RulesModal from '/components/Modals/RulesModal';
 import ScoreSubmitModal from '/components/Modals/ScoreSubmitModal';
 import DuelResultModal from '/components/Modals/DuelResultModal';
 import ConfirmModal from '/components/Modals/ConfirmModal';
+
 import GameArea from '/pages/Game';
 import About from '/pages/About';
 

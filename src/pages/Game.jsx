@@ -8,28 +8,12 @@ import GameControls from '../components/Game/GameControls';
 import config from '../config';
 
 class GameArea extends React.Component {
-  constructor() {
-    super();
-
-    this.gameEventHandler = this.gameEventHandler.bind(this);
-  }
-
-  gameEventHandler(event) {
-    if (event.nativeEvent.srcElement.value == 'SUBMIT') {
-      $(`#${config.modals.scoreSubmit.modalName}`).modal('show');
-    } else if (event.nativeEvent.srcElement.value == 'RESET') {
-      $(`#${config.modals.confirmModal.modalName}`).modal();
-    } else {
-      this.props.dispatch('GAME_CONTROL_ENTRY', event.nativeEvent.srcElement.alt);
-    }
-  }
-
   render() {
     return (
       <Layout>
         <div style={{ fontSize: '1.5em', lineHeight: '1.6em' }}>
           <div style={{ margin: '0 auto', width: '80vw', maxWidth: '1100px' }}>
-            <GameHeaderControls eventHandler={this.gameEventHandler} />
+            <GameHeaderControls />
 
             <div
               style={{
@@ -71,8 +55,7 @@ class GameArea extends React.Component {
 }
 
 GameArea.propTypes = {
-  gameState: PropTypes.object,
-  dispatch: PropTypes.func
+  gameState: PropTypes.object
 };
 
 const mapState = state => {
@@ -85,12 +68,4 @@ const mapState = state => {
   };
 };
 
-const mapDispatch = dispatch => {
-  return {
-    dispatch(type, data = null) {
-      dispatch({ type: type, data: data });
-    }
-  };
-};
-
-export default connect(mapState, mapDispatch)(GameArea);
+export default connect(mapState)(GameArea);

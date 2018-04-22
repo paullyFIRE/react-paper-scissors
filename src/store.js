@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import duelResultQueue from './reducers/duelResultQueue';
 import mwlogic from './model/middleware-logic';
+import duelResultQueue from './reducers/duelResultQueue';
 import game from './reducers/gameState';
 import api from './reducers/API';
 import middleAPI from './middleware/api';

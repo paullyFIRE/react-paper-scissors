@@ -1,10 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ModalButton from '../Buttons/ModalButton';
 import ControlButton from '../Buttons/ControlButton';
 import config from '../../config';
 
 class GameHeaderControls extends React.Component {
+  submitEvent() {
+    $(`#${config.modals.scoreSubmit.modalName}`).modal();
+  }
+
+  resetEvent() {
+    $(`#${config.modals.confirmModal.modalName}`).modal();
+  }
+
   render() {
     return (
       <div
@@ -17,10 +24,10 @@ class GameHeaderControls extends React.Component {
           margin: '0 auto'
         }}
       >
-        <ControlButton value="RESET" eventHandler={this.props.eventHandler}>
+        <ControlButton value="RESET" eventHandler={this.resetEvent}>
           Reset Game
         </ControlButton>
-        <ControlButton value="SUBMIT" eventHandler={this.props.eventHandler}>
+        <ControlButton value="SUBMIT" eventHandler={this.submitEvent}>
           Submit Score
         </ControlButton>
         <ModalButton linkModal={config.modals.rules}>Rules</ModalButton>
@@ -28,9 +35,5 @@ class GameHeaderControls extends React.Component {
     );
   }
 }
-
-GameHeaderControls.propTypes = {
-  eventHandler: PropTypes.func
-};
 
 export default GameHeaderControls;
