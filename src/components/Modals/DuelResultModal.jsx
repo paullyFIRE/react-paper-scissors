@@ -9,7 +9,7 @@ import rockSvg from '../../images/rock.svg';
 import paperSvg from '../../images/paper.svg';
 import scissorsSvg from '../../images/scissors.svg';
 
-import styles from './duelResultModal.scss';
+import styles from './DuelResultModal.scss';
 
 class DuelResultModal extends React.Component {
   animate() {
