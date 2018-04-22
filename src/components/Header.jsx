@@ -4,7 +4,7 @@ import LinkButton from './Buttons/LinkButton';
 import { Link } from 'react-router-dom';
 import config from '../config';
 
-import styles from './header.scss';
+import styles from './Header.scss';
 
 class Header extends React.Component {
   render() {
