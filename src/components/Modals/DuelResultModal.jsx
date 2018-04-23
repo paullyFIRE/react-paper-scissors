@@ -12,7 +12,7 @@ import scissorsSvg from '../../images/scissors.svg';
 import styles from './DuelResultModal.scss';
 
 class DuelResultModal extends React.Component {
-  animate() {
+  animateDuel() {
     const images = {
       rock: rockSvg,
       paper: paperSvg,
@@ -24,14 +24,36 @@ class DuelResultModal extends React.Component {
 
     const $playerHand = $('#player-hand');
     const $computerHand = $('#computer-hand');
+    const $modal = $(`#${this.props.modal.modalName}`);
+
+    let resultSlider;
+    let resultColor;
+    let scoreIncrement;
+
+    switch (this.props.duelState.result) {
+      case 'WON':
+        resultSlider = styles.sliderSchemeWin;
+        resultColor = 'green';
+        break;
+      case 'LOST':
+        resultSlider = styles.sliderSchemeLose;
+        resultColor = 'red';
+        break;
+      case 'DREW':
+        resultSlider = styles.sliderSchemeDraw;
+        resultColor = 'grey';
+        break;
+    }
 
     setTimeout(() => {
       for (let a = 0; a < 3; a++) {
         if (a == 2) {
           $playerHand.animate({ marginBottom: '+=140', marginLeft: '+=5' }, 340 + Math.floor(Math.random() * 40), function() {
             $playerHand.attr('src', images[playerOption]);
-            //reveal status text from display:none
-            $(`.${styles.title} h2`).css('display', 'block');
+            //reveal status text from display:none, and change slider background
+            $(`.${styles.title} h2`).css('display', 'inline-block');
+            $(`.${styles.title} strong`).css('color', resultColor);
+            $modal.removeClass(styles.sliderSchemeInitial).addClass(resultSlider);
           });
           $computerHand.animate({ marginBottom: '+=140', marginLeft: '+=5' }, 340 + Math.floor(Math.random() * 40), function() {
             $computerHand.attr('src', images[computerOption]);
@@ -52,7 +74,7 @@ class DuelResultModal extends React.Component {
           this.props.animationCompleted();
 
           setTimeout(() => {
-            $(`#${this.props.modal.modalName}`).modal('hide');
+            // $modal.modal('hide');
           }, this.props.modal.closeDelay);
         }
       }, 200);
@@ -63,24 +85,18 @@ class DuelResultModal extends React.Component {
     $('#player-hand').attr('src', rockSvg);
     $('#computer-hand').attr('src', rockSvg);
     $(`.${styles.title} h2`).css('display', 'none');
+    $(`#result-modal`)
+      .addClass(styles.sliderSchemeInitial)
+      .removeClass(styles.sliderSchemeWin)
+      .removeClass(styles.sliderSchemeLose)
+      .removeClass(styles.sliderSchemeDraw);
   }
 
   componentDidMount() {
     const $modal = $(`#${this.props.modal.modalName}`);
 
-    $modal.on('show.bs.modal', event => {
-      setTimeout(() => {
-        $('.modal-backdrop.in').css('opacity', '1');
-      }, 1);
-    });
-
     $modal.on('shown.bs.modal', event => {
-      this.animate();
-    });
-
-    $modal.on('hide.bs.modal', event => {
-      //Smoothens Background Opacity Fade-In on modal hide
-      $('.modal-backdrop.in').css('opacity', '0.1');
+      this.animateDuel();
     });
 
     $modal.on('hidden.bs.modal', event => {
@@ -90,7 +106,7 @@ class DuelResultModal extends React.Component {
 
   render() {
     return (
-      <Modal modalName={this.props.modal.modalName} dialogStyle={styles.dialog}>
+      <Modal modalName={this.props.modal.modalName} modalStyles={styles.sliderSchemeInitial} dialogStyle={styles.dialog}>
         <div className={styles.modalBody}>
           <div className={styles.title}>
             <h2>
@@ -115,13 +131,15 @@ class DuelResultModal extends React.Component {
 DuelResultModal.propTypes = {
   duelState: PropTypes.object,
   animationCompleted: PropTypes.func,
+  gameScore: PropTypes.number,
   modal: PropTypes.object
 };
 
 const mapState = state => {
   return {
     modal: config.modals.duelResult,
-    duelState: state.duelResultQueue.queue[0] || null
+    duelState: state.duelResultQueue.queue[0] || null,
+    gameScore: state.game.score
   };
 };
 

@@ -8,7 +8,6 @@
 
 .footerWrapper button:disabled {
   opacity: 0.8;
-  cursor: auto;
 }
 
 .formWrapper {
@@ -22,6 +21,7 @@
   border-bottom: 2px solid $submitColorScheme;
   color: $submitColorScheme;
   width: auto;
+  text-align: center;
 }
 
 .statusWrapper {

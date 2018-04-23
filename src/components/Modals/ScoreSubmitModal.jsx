@@ -113,7 +113,7 @@ class ScoreSubmitModal extends React.Component {
           <GameScoreBoard />
 
           <div className={styles.formWrapper}>
-            <label>Enter Your Alias Here</label>
+            <label>Enter Your Alias Here:</label>
             <input
               name="username"
               value={this.state.username}

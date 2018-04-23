@@ -19,9 +19,8 @@ class GameHeaderControls extends React.Component {
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
-          padding: '1.5em 0 0',
           maxWidth: '650px',
-          margin: '0 auto'
+          margin: '15px auto'
         }}
       >
         <ControlButton value="RESET" eventHandler={this.resetEvent}>

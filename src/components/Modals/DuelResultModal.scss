@@ -5,30 +5,29 @@
   width: 85%;
   max-width: 650px;
   top: 20%;
+  border: 2px solid black;
+  border-radius: 8px;
   transform: translate(-50%, -50%);
 }
 
 .modalBody {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
 }
 
 .title {
   display: flex;
+  flex-direction: column;
   flex: 1;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  margin-bottom: 1em;
 }
 
 .title h2 {
   display: none;
   font-size: $duelHeadingFontSize;
-}
-
-.title strong {
-  color: green;
 }
 
 .animationArea {
@@ -50,3 +49,74 @@
 .animationArea div:last-child img {
   transform: rotate(285deg) scaleX(-1);
 }
+
+.modalContainer {
+  background-size: $backgroundZoom $backgroundZoom;
+  animation: slide 5s linear infinite;
+}
+
+@keyframes slide {
+  from   { background-position: 100% 0px; }
+  to { background-position: 0px 0px; }
+}
+
+.sliderSchemeInitial {
+  background: repeating-linear-gradient(
+    45deg,
+    $duelGreen 0px,
+    $duelGreen $sliderBandWidth,
+    $sliderGrey $sliderBandWidth,
+    $sliderGrey $sliderBandWidth * 2,
+    $duelRed $sliderBandWidth * 2,
+    $duelRed $sliderBandWidth * 3,
+    $sliderGrey $sliderBandWidth * 3,
+    $sliderGrey $sliderBandWidth * 4
+    );
+
+    background-size: $backgroundZoom $backgroundZoom;
+    animation: slide $transitionSpeed linear infinite;
+  }
+
+.sliderSchemeWin {
+  background: repeating-linear-gradient(
+    45deg,
+    $duelGreen 0px,
+    $duelGreen $sliderBandWidth,
+    $sliderGrey $sliderBandWidth,
+    $sliderGrey $sliderBandWidth * 2
+  );
+
+  background-size: $backgroundZoom $backgroundZoom;
+  animation: slide $transitionSpeed linear infinite;
+}
+
+.sliderSchemeLose {
+  background: repeating-linear-gradient(
+    45deg,
+    $duelRed 0px,
+    $duelRed $sliderBandWidth,
+    $sliderGrey $sliderBandWidth,
+    $sliderGrey $sliderBandWidth * 2
+  );
+
+  background-size: $backgroundZoom $backgroundZoom;
+  animation: slide $transitionSpeed linear infinite;
+}
+
+.sliderSchemeDraw {
+  background: repeating-linear-gradient(
+    45deg,
+    $duelDraw 0px,
+    $duelDraw $sliderBandWidth,
+    $sliderGrey $sliderBandWidth,
+    $sliderGrey $sliderBandWidth * 2,
+    $duelGreen $sliderBandWidth * 2,
+    $duelGreen $sliderBandWidth * 3,
+    $sliderGrey $sliderBandWidth * 3,
+    $sliderGrey $sliderBandWidth * 4
+  );
+
+  background-size: $backgroundZoom $backgroundZoom;
+  animation: slide $transitionSpeed linear infinite;
+}
+

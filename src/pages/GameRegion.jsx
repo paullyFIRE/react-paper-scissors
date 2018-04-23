@@ -14,13 +14,15 @@ class GameRegion extends React.Component {
     return (
       <Layout>
         <div className={styles.wrapper}>
-          <GameHeaderControls />
-
           <div className={styles.statusHeading}>
             <h2>{this.props.gameState.statusText}</h2>
           </div>
 
-          <GameScoreBoard />
+          <GameHeaderControls />
+
+          <div className={styles.mainScoreWrapper}>
+            <GameScoreBoard />
+          </div>
 
           <GameRoundScores />
 
