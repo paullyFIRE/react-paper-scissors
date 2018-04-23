@@ -28,20 +28,28 @@ class DuelResultModal extends React.Component {
 
     let resultSlider;
     let resultColor;
+    let gameScore = this.props.gameScore;
     let scoreIncrement;
+    //maximum animation time of hands is 1500ms
+    let modalCloseDelay = 1500;
 
     switch (this.props.duelState.result) {
       case 'WON':
         resultSlider = styles.sliderSchemeWin;
         resultColor = 'green';
+        scoreIncrement = 1000;
+        modalCloseDelay += 2000;
         break;
       case 'LOST':
         resultSlider = styles.sliderSchemeLose;
         resultColor = 'red';
+        scoreIncrement = 0;
         break;
       case 'DREW':
         resultSlider = styles.sliderSchemeDraw;
         resultColor = 'grey';
+        scoreIncrement = 250;
+        modalCloseDelay += 500;
         break;
     }
 
@@ -51,10 +59,31 @@ class DuelResultModal extends React.Component {
           $playerHand.animate({ marginBottom: '+=140', marginLeft: '+=5' }, 340 + Math.floor(Math.random() * 40), function() {
             $playerHand.attr('src', images[playerOption]);
             //reveal status text from display:none, and change slider background
-            $(`.${styles.title} h2`).css('display', 'inline-block');
-            $(`.${styles.title} strong`).css('color', resultColor);
+            $(`.${styles.titlesBody} h2`).css('display', 'block');
+            $(`.${styles.titlesBody} strong`).css('color', resultColor);
             $modal.removeClass(styles.sliderSchemeInitial).addClass(resultSlider);
+
+            $(`.${styles.duelScore}`).css('display', 'flex');
+            $(`.${styles.duelScore} span:first-child`).text(gameScore);
+            $(`.${styles.duelScore} span > span`).text(scoreIncrement);
+
+            if (scoreIncrement !== 0) {
+              setTimeout(() => {
+                const ticker = setInterval(() => {
+                  if (scoreIncrement == 0) {
+                    clearInterval(ticker);
+                  } else {
+                    gameScore += 5;
+                    scoreIncrement -= 5;
+                  }
+
+                  $(`.${styles.duelScore} span:first-child`).text(gameScore);
+                  $(`.${styles.duelScore} span > span`).text(scoreIncrement);
+                }, 10);
+              }, 1000);
+            }
           });
+
           $computerHand.animate({ marginBottom: '+=140', marginLeft: '+=5' }, 340 + Math.floor(Math.random() * 40), function() {
             $computerHand.attr('src', images[computerOption]);
           });
@@ -69,13 +98,13 @@ class DuelResultModal extends React.Component {
 
       //Inverval checking for animation finish
       let animationFinishCheck = setInterval(() => {
-        if (!$(`#player-hand`).is(':animated')) {
+        if (!$playerHand.is(':animated')) {
           clearInterval(animationFinishCheck);
           this.props.animationCompleted();
 
           setTimeout(() => {
-            // $modal.modal('hide');
-          }, this.props.modal.closeDelay);
+            $modal.modal('hide');
+          }, this.props.modal.closeDelay + modalCloseDelay);
         }
       }, 200);
     }, this.props.modal.initialDelay);
@@ -84,8 +113,9 @@ class DuelResultModal extends React.Component {
   resetComponent() {
     $('#player-hand').attr('src', rockSvg);
     $('#computer-hand').attr('src', rockSvg);
-    $(`.${styles.title} h2`).css('display', 'none');
-    $(`#result-modal`)
+    $(`.${styles.titlesBody} h2`).css('display', 'none');
+    $(`.${styles.duelScore}`).css('display', 'none');
+    $(`#${this.props.modal.modalName}`)
       .addClass(styles.sliderSchemeInitial)
       .removeClass(styles.sliderSchemeWin)
       .removeClass(styles.sliderSchemeLose)
@@ -108,10 +138,21 @@ class DuelResultModal extends React.Component {
     return (
       <Modal modalName={this.props.modal.modalName} modalStyles={styles.sliderSchemeInitial} dialogStyle={styles.dialog}>
         <div className={styles.modalBody}>
-          <div className={styles.title}>
-            <h2>
-              You <strong>{this.props.duelState ? this.props.duelState.result : ''}</strong>!
-            </h2>
+          <div className={styles.titlesBody}>
+            <div>
+              <h2>
+                You <strong>{this.props.duelState ? this.props.duelState.result : ''}</strong>!
+              </h2>
+
+              {this.props.duelState && this.props.duelState.result !== 'LOST' ? (
+                <h3 className={styles.duelScore}>
+                  Score:&nbsp;<span />&nbsp;
+                  <span>
+                    (+<span />)
+                  </span>
+                </h3>
+              ) : null}
+            </div>
           </div>
 
           <div className={styles.animationArea}>

@@ -16,18 +16,29 @@
   height: 400px;
 }
 
-.title {
+.titlesBody {
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
   align-items: center;
   margin-bottom: 1em;
+
+  & h2 {
+    display: none;
+    font-size: $duelHeadingFontSize;
+  }
 }
 
-.title h2 {
+.duelScore {
   display: none;
-  font-size: $duelHeadingFontSize;
+  justify-content: center;
+  font-size: $duelScoreFontSize;
+
+  & span:first-child {
+    color: green;
+    font-weight: bold;
+  }
 }
 
 .animationArea {
@@ -39,7 +50,7 @@
 
 .animationArea div {
   position: relative;
-  width: 200px;
+  width: 40%;
 }
 
 .animationArea div:first-child img {
@@ -56,8 +67,12 @@
 }
 
 @keyframes slide {
-  from   { background-position: 100% 0px; }
-  to { background-position: 0px 0px; }
+  from {
+    background-position: 100% 0px;
+  }
+  to {
+    background-position: 0px 0px;
+  }
 }
 
 .sliderSchemeInitial {
@@ -71,12 +86,11 @@
     $duelRed $sliderBandWidth * 3,
     $sliderGrey $sliderBandWidth * 3,
     $sliderGrey $sliderBandWidth * 4
-    );
+  );
 
-    background-size: $backgroundZoom $backgroundZoom;
-    animation: slide $transitionSpeed linear infinite;
-  }
-
+  background-size: $backgroundZoom $backgroundZoom;
+  animation: slide $transitionSpeed linear infinite;
+}
 .sliderSchemeWin {
   background: repeating-linear-gradient(
     45deg,
@@ -85,11 +99,9 @@
     $sliderGrey $sliderBandWidth,
     $sliderGrey $sliderBandWidth * 2
   );
-
   background-size: $backgroundZoom $backgroundZoom;
   animation: slide $transitionSpeed linear infinite;
 }
-
 .sliderSchemeLose {
   background: repeating-linear-gradient(
     45deg,
@@ -98,25 +110,21 @@
     $sliderGrey $sliderBandWidth,
     $sliderGrey $sliderBandWidth * 2
   );
-
   background-size: $backgroundZoom $backgroundZoom;
   animation: slide $transitionSpeed linear infinite;
 }
-
 .sliderSchemeDraw {
   background: repeating-linear-gradient(
     45deg,
-    $duelDraw 0px,
-    $duelDraw $sliderBandWidth,
+    $duelGreen 0px,
+    $duelGreen $sliderBandWidth,
     $sliderGrey $sliderBandWidth,
     $sliderGrey $sliderBandWidth * 2,
-    $duelGreen $sliderBandWidth * 2,
-    $duelGreen $sliderBandWidth * 3,
+    $duelDraw $sliderBandWidth * 2,
+    $duelDraw $sliderBandWidth * 3,
     $sliderGrey $sliderBandWidth * 3,
     $sliderGrey $sliderBandWidth * 4
   );
-
   background-size: $backgroundZoom $backgroundZoom;
   animation: slide $transitionSpeed linear infinite;
 }
-

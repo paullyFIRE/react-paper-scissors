@@ -28,7 +28,7 @@ const config = {
       heading: 'Duel Result',
       modalName: 'result-modal',
       initialDelay: 750,
-      closeDelay: 1250
+      closeDelay: 400
     },
     confirmModal: {
       heading: 'Confirmation',
