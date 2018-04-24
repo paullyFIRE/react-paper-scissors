@@ -9,7 +9,13 @@ import scissorsSvg from '../../images/scissors.svg';
 class GameControls extends React.Component {
   render() {
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          paddingTop: '20px'
+        }}
+      >
         <GameActionButton value="rock" eventHandler={this.props.beginDuel} src={rockSvg} />
         <GameActionButton value="paper" eventHandler={this.props.beginDuel} src={paperSvg} />
         <GameActionButton value="scissors" eventHandler={this.props.beginDuel} src={scissorsSvg} />

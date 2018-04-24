@@ -5,14 +5,9 @@ $gameFontSize: 1.5em;
 $headerColor: #2980b9;
 $headerFontSize: 45px;
 
-//Game Action Buttons
-$actionButtonBackgroundColor: rgb(211, 211, 211);
-$multiplierHoverBackground: rgb(0, 181, 187);
-$standardHoverBackground: #2d95da;
-
 //Main ScoreBoard
-$scoreFontSize: 1.8em;
-$subScoreFontSize: 1em;
+$scoreFontSize: 2em;
+$subScoreFontSize: 0.8em;
 
 //Duel Modal
 $duelHeadingFontSize: 4em;
@@ -31,3 +26,9 @@ $backgroundZoomMultiplier: 350%;
 //Submit Modal
 $submitLabelFontSize: 25px;
 $submitColorScheme: red;
+
+//Game Action Buttons
+$actionButtonBackgroundColor: rgb(211, 211, 211);
+$multiplierHoverBackground: rgb(0, 181, 187);
+// $multiplierHoverBackground: rgb(247, 194, 97);
+$standardHoverBackground: lightblue;

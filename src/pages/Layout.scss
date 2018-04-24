@@ -1,0 +1,10 @@
+.layoutWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.headerWrapper {
+  flex: 1 0 auto;
+  background: rgb(247, 241, 241);
+}

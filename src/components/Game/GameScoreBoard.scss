@@ -1,36 +1,51 @@
 @import "../../global-styles.scss";
 
+.flex {
+  display: flex;
+}
+
 .wrapper {
-  margin-top: 1em;
-  margin-bottom: 1.5em;
+  @extend .flex;
+  flex-direction: column;
+  margin: 1em auto;
 }
 
 .scoreWrapper {
-  display: flex;
+  @extend .flex;
   justify-content: center;
-  padding-bottom: 20px;
-}
+  margin: 1.5em auto;
 
-.scoreWrapper label {
-  padding-top: 10px;
-  font-size: $scoreFontSize;
-}
+  & label {
+    font-size: $scoreFontSize;
 
-.scoreWrapper label span {
-  color: green;
+    & span {
+      color: green;
+    }
+  }
 }
 
 .subScoreWrapper {
   display: flex;
-  font-size: $subScoreFontSize;
   justify-content: space-around;
+  font-size: $subScoreFontSize;
   padding: 0 5vw;
+
+  & span {
+    color: green;
+  }
+
+  & label:nth-child(2) {
+    & span {
+      color: red;
+    }
+  }
 }
 
-.subScoreWrapper span {
-  color: green;
-}
-
-.subScoreWrapper label:nth-child(2) span {
-  color: red;
+.roundWrapper {
+  @extend .flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5em;
+  font-size: $subScoreFontSize;
 }

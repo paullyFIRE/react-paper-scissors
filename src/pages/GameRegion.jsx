@@ -5,7 +5,6 @@ import Layout from './Layout';
 import GameScoreBoard from '../components/Game/GameScoreBoard';
 import GameHeaderControls from '../components/Game/GameHeaderControls';
 import GameControls from '../components/Game/GameControls';
-import GameRoundScores from '../components/Game/GameRoundScores';
 import config from '../config';
 import styles from './GameRegion.scss';
 
@@ -14,17 +13,14 @@ class GameRegion extends React.Component {
     return (
       <Layout>
         <div className={styles.wrapper}>
-          <div className={styles.statusHeading}>
+          <GameHeaderControls />
+          <div className={`${styles.statusHeading} bg-primary`}>
             <h2>{this.props.gameState.statusText}</h2>
           </div>
-
-          <GameHeaderControls />
 
           <div className={styles.mainScoreWrapper}>
             <GameScoreBoard />
           </div>
-
-          <GameRoundScores />
 
           <GameControls eventHandler={this.gameEventHandler} />
 

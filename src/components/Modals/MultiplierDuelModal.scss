@@ -1,13 +1,13 @@
-@import '../../global-styles.scss';
+@import "../../global-styles.scss";
 
 @keyframes slide {
-    from {
-      background-position: 0px 100%;
-    }
-    to {
-      background-position: 0px 0px;
-    }
+  from {
+    background-position: 0px 100%;
   }
+  to {
+    background-position: 0px 0px;
+  }
+}
 
 .sliderSchemeInitial {
   background: repeating-linear-gradient(
@@ -19,42 +19,41 @@
   );
   background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
   animation: slide $transitionSpeed linear infinite;
-  }
-  
-  .sliderSchemeWin {
-    background: repeating-linear-gradient(
-      45deg,
-      $duelGreen 0px,
-      $duelGreen $sliderBandWidthMultiplier,
-      $sliderGrey $sliderBandWidthMultiplier,
-      $sliderGrey $sliderBandWidthMultiplier * 2
-    );
-    background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
-    animation: slide $transitionSpeed linear infinite;
-  }
-  .sliderSchemeLose {
-    background: repeating-linear-gradient(
-      45deg,
-      $duelRed 0px,
-      $duelRed $sliderBandWidthMultiplier,
-      $sliderGrey $sliderBandWidthMultiplier,
-      $sliderGrey $sliderBandWidthMultiplier * 2
-    );
-    background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
-    animation: slide $transitionSpeed linear infinite;
-  }
-  .sliderSchemeDraw {
-    background: repeating-linear-gradient(
-      45deg,
-      $duelGreen 0px,
-      $duelGreen $sliderBandWidthMultiplier,
-      $sliderGrey $sliderBandWidthMultiplier,
-      $sliderGrey $sliderBandWidthMultiplier * 2,
-      $duelDraw $sliderBandWidthMultiplier * 2,
-      $duelDraw $sliderBandWidthMultiplier * 3,
-      $sliderGrey $sliderBandWidthMultiplier * 3,
-      $sliderGrey $sliderBandWidthMultiplier * 4
-    );
-    background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
-    animation: slide $transitionSpeed linear infinite;
-  }
+}
+.sliderSchemeWin {
+  background: repeating-linear-gradient(
+    45deg,
+    $duelGreen 0px,
+    $duelGreen $sliderBandWidthMultiplier,
+    $sliderGrey $sliderBandWidthMultiplier,
+    $sliderGrey $sliderBandWidthMultiplier * 2
+  );
+  background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
+  animation: slide $transitionSpeed linear infinite;
+}
+.sliderSchemeLose {
+  background: repeating-linear-gradient(
+    45deg,
+    $duelRed 0px,
+    $duelRed $sliderBandWidthMultiplier,
+    $sliderGrey $sliderBandWidthMultiplier,
+    $sliderGrey $sliderBandWidthMultiplier * 2
+  );
+  background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
+  animation: slide $transitionSpeed linear infinite;
+}
+.sliderSchemeDraw {
+  background: repeating-linear-gradient(
+    45deg,
+    $duelGreen 0px,
+    $duelGreen $sliderBandWidthMultiplier,
+    $sliderGrey $sliderBandWidthMultiplier,
+    $sliderGrey $sliderBandWidthMultiplier * 2,
+    $duelDraw $sliderBandWidthMultiplier * 2,
+    $duelDraw $sliderBandWidthMultiplier * 3,
+    $sliderGrey $sliderBandWidthMultiplier * 3,
+    $sliderGrey $sliderBandWidthMultiplier * 4
+  );
+  background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
+  animation: slide $transitionSpeed linear infinite;
+}
