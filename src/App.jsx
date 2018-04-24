@@ -7,7 +7,8 @@ import LeaderboardModal from '/components/Modals/LeaderboardModal';
 import GamesModal from '/components/Modals/GamesModal';
 import RulesModal from '/components/Modals/RulesModal';
 import ScoreSubmitModal from '/components/Modals/ScoreSubmitModal';
-import DuelResultModal from '/components/Modals/DuelResultModal';
+import StandardDuelModal from '/components/Modals/StandardDuelModal';
+import MultiplierDuelModal from '/components/Modals/MultiplierDuelModal';
 import ConfirmModal from '/components/Modals/ConfirmModal';
 
 import GameRegion from '/pages/GameRegion';
@@ -29,7 +30,8 @@ class App extends React.Component {
           <GamesModal />
           <RulesModal />
           <ScoreSubmitModal />
-          <DuelResultModal />
+          <StandardDuelModal />
+          <MultiplierDuelModal />
           <ConfirmModal />
         </div>
       </BrowserRouter>

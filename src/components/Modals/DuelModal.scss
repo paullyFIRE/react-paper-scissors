@@ -1,0 +1,66 @@
+@import "../../global-styles.scss";
+
+.dialog {
+  position: absolute;
+  width: 85%;
+  max-width: 650px;
+  top: 20%;
+  border: 2px solid black;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.titlesBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+
+  & h2 {
+    display: none;
+    font-size: $duelHeadingFontSize;
+  }
+}
+
+.duelScore {
+  display: none;
+  justify-content: center;
+  font-size: $duelScoreFontSize;
+
+  & span:first-child {
+    color: green;
+    font-weight: bold;
+  }
+
+  & span:nth-child(2) {
+    display: none;
+  }
+}
+
+.animationArea {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+}
+
+.animationArea div {
+  position: relative;
+  width: 40%;
+}
+
+.animationArea div:first-child img {
+  transform: rotate(75deg);
+}
+
+.animationArea div:last-child img {
+  transform: rotate(285deg) scaleX(-1);
+}

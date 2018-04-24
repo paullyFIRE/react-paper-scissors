@@ -30,6 +30,20 @@ const config = {
       initialDelay: 750,
       closeDelay: 400
     },
+    standardDuel: {
+      heading: 'Duel Result',
+      modalName: 'standard-duel-modal',
+      initialDelay: 750,
+      closeDelay: 1000,
+      scoreTickerTotalTime: 2000
+    },
+    multiplierModal: {
+      heading: 'Duel Result',
+      modalName: 'multiplier-duel-modal',
+      initialDelay: 750,
+      closeDelay: 1500,
+      scoreTickerTotalTime: 2000
+    },
     confirmModal: {
       heading: 'Confirmation',
       modalName: 'confirm-modal'

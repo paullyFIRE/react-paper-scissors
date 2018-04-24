@@ -17,7 +17,7 @@ const mwlogic = store => next => action => {
 
     next(action);
   } else if (action.type == 'ADD_DUEL') {
-    $(`#${config.modals.duelResult.modalName}`).modal({ backdrop: 'static' });
+    $(`#${config.modals.multiplierModal.modalName}`).modal({ backdrop: 'static' });
 
     next(action);
   } else if (action.type == 'DUEL_ANIMATION_COMPLETED') {

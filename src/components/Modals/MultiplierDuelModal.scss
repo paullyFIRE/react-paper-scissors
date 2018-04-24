@@ -1,0 +1,64 @@
+@import '../../global-styles.scss';
+
+@keyframes slide {
+    from {
+      background-position: 100% 0px;
+    }
+    to {
+      background-position: 0px 0px;
+    }
+  }
+
+.sliderSchemeInitial {
+    background: repeating-linear-gradient(
+      45deg,
+      $duelGreen 0px,
+      $duelGreen $sliderBandWidth,
+      $sliderGrey $sliderBandWidth,
+      $sliderGrey $sliderBandWidth * 2,
+      $duelRed $sliderBandWidth * 2,
+      $duelRed $sliderBandWidth * 3,
+      $sliderGrey $sliderBandWidth * 3,
+      $sliderGrey $sliderBandWidth * 4
+    );
+  
+    background-size: $backgroundZoom $backgroundZoom;
+    animation: slide $transitionSpeed linear infinite;
+  }
+  .sliderSchemeWin {
+    background: repeating-linear-gradient(
+      45deg,
+      $duelGreen 0px,
+      $duelGreen $sliderBandWidth,
+      $sliderGrey $sliderBandWidth,
+      $sliderGrey $sliderBandWidth * 2
+    );
+    background-size: $backgroundZoom $backgroundZoom;
+    animation: slide $transitionSpeed linear infinite;
+  }
+  .sliderSchemeLose {
+    background: repeating-linear-gradient(
+      45deg,
+      $duelRed 0px,
+      $duelRed $sliderBandWidth,
+      $sliderGrey $sliderBandWidth,
+      $sliderGrey $sliderBandWidth * 2
+    );
+    background-size: $backgroundZoom $backgroundZoom;
+    animation: slide $transitionSpeed linear infinite;
+  }
+  .sliderSchemeDraw {
+    background: repeating-linear-gradient(
+      45deg,
+      $duelGreen 0px,
+      $duelGreen $sliderBandWidth,
+      $sliderGrey $sliderBandWidth,
+      $sliderGrey $sliderBandWidth * 2,
+      $duelDraw $sliderBandWidth * 2,
+      $duelDraw $sliderBandWidth * 3,
+      $sliderGrey $sliderBandWidth * 3,
+      $sliderGrey $sliderBandWidth * 4
+    );
+    background-size: $backgroundZoom $backgroundZoom;
+    animation: slide $transitionSpeed linear infinite;
+  }
