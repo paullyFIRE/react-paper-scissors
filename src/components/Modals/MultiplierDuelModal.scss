@@ -2,7 +2,7 @@
 
 @keyframes slide {
     from {
-      background-position: 100% 0px;
+      background-position: 0px 100%;
     }
     to {
       background-position: 0px 0px;
@@ -10,55 +10,51 @@
   }
 
 .sliderSchemeInitial {
-    background: repeating-linear-gradient(
-      45deg,
-      $duelGreen 0px,
-      $duelGreen $sliderBandWidth,
-      $sliderGrey $sliderBandWidth,
-      $sliderGrey $sliderBandWidth * 2,
-      $duelRed $sliderBandWidth * 2,
-      $duelRed $sliderBandWidth * 3,
-      $sliderGrey $sliderBandWidth * 3,
-      $sliderGrey $sliderBandWidth * 4
-    );
-  
-    background-size: $backgroundZoom $backgroundZoom;
-    animation: slide $transitionSpeed linear infinite;
+  background: repeating-linear-gradient(
+    45deg,
+    $sliderBonusColor 0px,
+    $sliderBonusColor $sliderBandWidthMultiplier,
+    $sliderGrey $sliderBandWidthMultiplier,
+    $sliderGrey $sliderBandWidthMultiplier * 2
+  );
+  background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
+  animation: slide $transitionSpeed linear infinite;
   }
+  
   .sliderSchemeWin {
     background: repeating-linear-gradient(
       45deg,
       $duelGreen 0px,
-      $duelGreen $sliderBandWidth,
-      $sliderGrey $sliderBandWidth,
-      $sliderGrey $sliderBandWidth * 2
+      $duelGreen $sliderBandWidthMultiplier,
+      $sliderGrey $sliderBandWidthMultiplier,
+      $sliderGrey $sliderBandWidthMultiplier * 2
     );
-    background-size: $backgroundZoom $backgroundZoom;
+    background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
     animation: slide $transitionSpeed linear infinite;
   }
   .sliderSchemeLose {
     background: repeating-linear-gradient(
       45deg,
       $duelRed 0px,
-      $duelRed $sliderBandWidth,
-      $sliderGrey $sliderBandWidth,
-      $sliderGrey $sliderBandWidth * 2
+      $duelRed $sliderBandWidthMultiplier,
+      $sliderGrey $sliderBandWidthMultiplier,
+      $sliderGrey $sliderBandWidthMultiplier * 2
     );
-    background-size: $backgroundZoom $backgroundZoom;
+    background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
     animation: slide $transitionSpeed linear infinite;
   }
   .sliderSchemeDraw {
     background: repeating-linear-gradient(
       45deg,
       $duelGreen 0px,
-      $duelGreen $sliderBandWidth,
-      $sliderGrey $sliderBandWidth,
-      $sliderGrey $sliderBandWidth * 2,
-      $duelDraw $sliderBandWidth * 2,
-      $duelDraw $sliderBandWidth * 3,
-      $sliderGrey $sliderBandWidth * 3,
-      $sliderGrey $sliderBandWidth * 4
+      $duelGreen $sliderBandWidthMultiplier,
+      $sliderGrey $sliderBandWidthMultiplier,
+      $sliderGrey $sliderBandWidthMultiplier * 2,
+      $duelDraw $sliderBandWidthMultiplier * 2,
+      $duelDraw $sliderBandWidthMultiplier * 3,
+      $sliderGrey $sliderBandWidthMultiplier * 3,
+      $sliderGrey $sliderBandWidthMultiplier * 4
     );
-    background-size: $backgroundZoom $backgroundZoom;
+    background-size: $backgroundZoomMultiplier $backgroundZoomMultiplier;
     animation: slide $transitionSpeed linear infinite;
   }

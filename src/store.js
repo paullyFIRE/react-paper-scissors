@@ -13,14 +13,14 @@ const defaultState = {
   game: {
     state: 'STANDARD_ROUND',
     statusText: 'Hit a Button to Begin!',
-    score: 2000,
+    score: 0,
     roundsWon: 0,
     roundsLost: 0,
     multipliers: 0,
     rounds: [
       {
         id: 1,
-        pointsPlayer: 2,
+        pointsPlayer: 0,
         pointsCPU: 0,
         pointsDraw: 0
       }

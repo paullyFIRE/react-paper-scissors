@@ -40,8 +40,8 @@ const config = {
     multiplierModal: {
       heading: 'Duel Result',
       modalName: 'multiplier-duel-modal',
-      initialDelay: 750,
-      closeDelay: 1500,
+      initialDelay: 1500,
+      closeDelay: 2000,
       scoreTickerTotalTime: 2000
     },
     confirmModal: {

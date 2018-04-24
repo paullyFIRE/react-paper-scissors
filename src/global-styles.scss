@@ -7,6 +7,8 @@ $headerFontSize: 45px;
 
 //Game Action Buttons
 $actionButtonBackgroundColor: rgb(211, 211, 211);
+$multiplierHoverBackground: rgb(0, 181, 187);
+$standardHoverBackground: #2d95da;
 
 //Main ScoreBoard
 $scoreFontSize: 1.8em;
@@ -16,12 +18,15 @@ $subScoreFontSize: 1em;
 $duelHeadingFontSize: 4em;
 $duelScoreFontSize: 2em;
 $sliderGrey: rgba(255, 255, 255, 0.8);
+$sliderBonusColor: rgb(0, 181, 187);
 $duelGreen: #2ecc71;
 $duelRed: #e74c3c;
 $duelDraw: #7a7a7a;
 $sliderBandWidth: 80px;
+$sliderBandWidthMultiplier: 100px;
 $transitionSpeed: 20000ms;
 $backgroundZoom: 200%;
+$backgroundZoomMultiplier: 350%;
 
 //Submit Modal
 $submitLabelFontSize: 25px;
