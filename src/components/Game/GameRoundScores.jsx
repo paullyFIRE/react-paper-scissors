@@ -9,11 +9,11 @@ class GameRoundScores extends React.Component {
     return (
       <div className={styles.wrapper}>
         <label>
-          Player Score: {this.props.currentRound.pointsPlayer} / {this.props.roundLimit}
+          Player Score: {this.props.pointsPlayer} / {this.props.roundLimit}
         </label>
-        <label>Draws: {this.props.currentRound.pointsDraw}</label>
+        <label>Draws: {this.props.pointsDraw}</label>
         <label>
-          Computer Score: {this.props.currentRound.pointsCPU} / {this.props.roundLimit}
+          Computer Score: {this.props.pointsCPU} / {this.props.roundLimit}
         </label>
       </div>
     );
@@ -21,13 +21,17 @@ class GameRoundScores extends React.Component {
 }
 
 GameRoundScores.propTypes = {
-  currentRound: PropTypes.object,
+  pointsCPU: PropTypes.number,
+  pointsDraw: PropTypes.number,
+  pointsPlayer: PropTypes.number,
   roundLimit: PropTypes.number
 };
 
 const mapState = state => {
   return {
-    currentRound: state.game.rounds[0],
+    pointsCPU: state.game.rounds[0].pointsCPU,
+    pointsDraw: state.game.rounds[0].pointsDraw,
+    pointsPlayer: state.game.rounds[0].pointsPlayer,
     roundLimit: config.roundLimit
   };
 };

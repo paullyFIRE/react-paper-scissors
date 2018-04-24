@@ -30,27 +30,36 @@ const mwlogic = store => next => action => {
     }
     next(action);
   } else if (action.type == 'ADD_DUEL') {
-    $(`#${config.modals.multiplierModal.modalName}`).modal({ backdrop: 'static' });
+    if (action.data.duelType == 'MULTIPLIER') {
+      $(`#${config.modals.multiplierModal.modalName}`).modal({ backdrop: 'static' });
+    } else if (action.data.duelType == 'STANDARD') {
+      $(`#${config.modals.standardDuel.modalName}`).modal({ backdrop: 'static' });
+    }
 
     next(action);
   } else if (action.type == 'DUEL_ANIMATION_COMPLETED') {
     const state = store.getState();
 
-    switch (state.duelResultQueue.queue[0].result) {
-      case 'WON':
-        store.dispatch({ type: 'POINT_WON' });
-        break;
-      case 'LOST':
-        store.dispatch({ type: 'POINT_LOST' });
-        break;
-      case 'DREW':
-        store.dispatch({ type: 'POINT_DRAW' });
-        break;
+    if (state.duelResultQueue.queue[0].duelType == 'STANDARD') {
+      switch (state.duelResultQueue.queue[0].result) {
+        case 'WON':
+          store.dispatch({ type: 'POINT_WON' });
+          break;
+        case 'LOST':
+          store.dispatch({ type: 'POINT_LOST' });
+          break;
+        case 'DREW':
+          store.dispatch({ type: 'POINT_DRAW' });
+          break;
+      }
+    } else {
+      if (state.duelResultQueue.queue[0].result == 'WON') {
+        store.dispatch({ type: 'MULTIPLIER_WON' });
+      }
+      store.dispatch({ type: 'MULTIPLIER_ROUND_OVER' });
     }
 
     next(action);
-  } else if (action.type == 'GAME_CONTROL_MULTIPLIER' && action.data) {
-    //ACTION HANDLER HERE FOR THE MULTIPLER GAMEPLAY
   } else if (action.type == 'POINT_WON') {
     next(action);
 
@@ -68,7 +77,6 @@ const mwlogic = store => next => action => {
       store.dispatch({ type: 'ROUND_LOST' });
     }
   } else if (action.type == 'ROUND_WON') {
-    // $(`#${config.modals.multiplier.modalName}`).modal({ backdrop: 'static' });
     store.dispatch({ type: 'NEW_ROUND' });
     next(action);
   } else if (action.type == 'ROUND_LOST') {

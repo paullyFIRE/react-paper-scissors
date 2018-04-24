@@ -11,16 +11,16 @@ let random = seed => {
 
 const defaultState = {
   game: {
-    state: 'MULTIPLIER_ROUND',
+    state: 'STANDARD_ROUND',
     statusText: 'Hit a Button to Begin!',
-    score: random(100) * 100,
-    roundsWon: random(10),
-    roundsLost: random(4),
-    multipliers: random(10),
+    score: 2000,
+    roundsWon: 0,
+    roundsLost: 0,
+    multipliers: 0,
     rounds: [
       {
         id: 1,
-        pointsPlayer: 0,
+        pointsPlayer: 2,
         pointsCPU: 0,
         pointsDraw: 0
       }

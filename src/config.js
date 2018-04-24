@@ -35,7 +35,7 @@ const config = {
       modalName: 'standard-duel-modal',
       initialDelay: 750,
       closeDelay: 1000,
-      scoreTickerTotalTime: 2000
+      scoreTickerTotalTime: 1250
     },
     multiplierModal: {
       heading: 'Duel Result',

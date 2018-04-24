@@ -7,9 +7,15 @@ const GameState = (state = {}, action) => {
         score: state.score * 2
       });
 
+    case 'MULTIPLIER_ROUND_OVER':
+      return Object.assign({}, state, {
+        state: 'STANDARD_ROUND'
+      });
+
     case 'ROUND_WON':
       return Object.assign({}, state, {
-        roundsWon: state.roundsWon + 1
+        roundsWon: state.roundsWon + 1,
+        state: 'MULTIPLIER_ROUND'
       });
 
     case 'ROUND_LOST':
@@ -82,10 +88,6 @@ const GameState = (state = {}, action) => {
           ]
         }
       );
-
-    case 'STARTED':
-      return Object.assign({}, state, { started: true });
-
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-export const fetchData = (path, request, callback) => {
+const fetchData = (path, request, callback) => {
   let domain = process.env.NODE_ENV !== 'production' ? 'http://159.65.21.186/' : '/';
 
   if (request.method == 'GET') {
@@ -19,3 +19,5 @@ export const fetchData = (path, request, callback) => {
       .catch(callback);
   }
 };
+
+export default fetchData;

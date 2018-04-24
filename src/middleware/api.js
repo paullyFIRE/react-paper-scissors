@@ -1,4 +1,4 @@
-import { fetchData } from '../model/api-logic';
+import fetchData from '../model/api-logic';
 import config from '../config';
 
 const api = store => next => action => {
@@ -6,6 +6,18 @@ const api = store => next => action => {
     fetchData(config.modals.games.apiPath, { method: 'GET' }, payload => {
       if (payload.success == 1) {
         store.dispatch({
+          type: 'DATA_RECEIVED',
+          name: config.modals.games.storeName,
+          data: payload.data
+        });
+      }
+    });
+
+    fetchData(config.modals.leaderboard.apiPath, { method: 'GET' }, payload => {
+      if (payload.success == 1) {
+        store.dispatch({
+          type: 'DATA_RECEIVED',
+          name: config.modals.leaderboard.storeName,
           type: 'DATA_RECEIVED',
           name: config.modals.games.storeName,
           data: payload.data

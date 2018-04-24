@@ -156,7 +156,7 @@ class DuelModal extends React.Component {
           <div className={styles.titlesBody}>
             <div>
               <h2>
-                You <strong>{this.props.duelState ? this.props.duelState.result : ''}</strong>!
+                You <strong>{this.props.duelState ? this.props.duelState.result : ''}</strong>
               </h2>
 
               <h3 className={styles.duelScore}>
