@@ -79,12 +79,13 @@ class DuelModal extends React.Component {
         $(`.${styles.duelScore} span > span`).text(duelSettings.scoreIncrement);
       }
 
-      const rate = Math.floor(duelSettings.scoreIncrement / duelSettings.scoreTickerTotalTime * 10);
+      const rate = duelSettings.scoreIncrement / duelSettings.scoreTickerTotalTime * 10;
+      const endScore = duelSettings.gameScore + duelSettings.scoreIncrement;
 
       if (duelSettings.scoreIncrement !== 0) {
         setTimeout(() => {
           const ticker = setInterval(() => {
-            if (duelSettings.scoreIncrement == 0) {
+            if (duelSettings.scoreIncrement <= 0) {
               clearInterval(ticker);
               closeModal();
             } else {
@@ -92,8 +93,8 @@ class DuelModal extends React.Component {
               duelSettings.scoreIncrement -= rate;
             }
 
-            $(`.${styles.duelScore} span:first-child`).text(duelSettings.gameScore);
-            $(`.${styles.duelScore} span > span`).text(duelSettings.scoreIncrement);
+            $(`.${styles.duelScore} span:first-child`).text(duelSettings.gameScore.toFixed(0));
+            $(`.${styles.duelScore} span > span`).text(duelSettings.scoreIncrement.toFixed(0));
           }, 10);
         }, 1000);
       } else {

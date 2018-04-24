@@ -5,6 +5,7 @@ const duelResultQueue = (state = {}, action) => {
         queue: [
           {
             id: state.queue[0] ? state.queue[0].id + 1 : 1,
+            duelType: action.data.duelType,
             player: action.data.player,
             computer: action.data.computer,
             status: 'PENDING',

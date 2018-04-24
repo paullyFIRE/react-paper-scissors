@@ -17,7 +17,7 @@ class MultiplierDuelModal extends React.Component {
         WON: {
           slider: styles.sliderSchemeWin,
           points(score) {
-            return score * 2;
+            return score;
           }
         },
         LOST: {

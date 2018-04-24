@@ -5,16 +5,29 @@ import config from '../config';
 const mwlogic = store => next => action => {
   if (action.type == 'GAME_CONTROL_ENTRY' && action.data) {
     const roundResponse = play(action.data);
+    const state = store.getState();
 
-    store.dispatch({
-      type: 'ADD_DUEL',
-      data: {
-        player: action.data,
-        computer: roundResponse.computer,
-        result: roundResponse.result
-      }
-    });
-
+    if (state.game.state == 'STANDARD_ROUND') {
+      store.dispatch({
+        type: 'ADD_DUEL',
+        data: {
+          player: action.data,
+          computer: roundResponse.computer,
+          result: roundResponse.result,
+          duelType: 'STANDARD'
+        }
+      });
+    } else if (state.game.state == 'MULTIPLIER_ROUND') {
+      store.dispatch({
+        type: 'ADD_DUEL',
+        data: {
+          player: action.data,
+          computer: roundResponse.computer,
+          result: roundResponse.result,
+          duelType: 'MULTIPLIER'
+        }
+      });
+    }
     next(action);
   } else if (action.type == 'ADD_DUEL') {
     $(`#${config.modals.multiplierModal.modalName}`).modal({ backdrop: 'static' });
