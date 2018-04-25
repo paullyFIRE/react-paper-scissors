@@ -22,15 +22,13 @@ class GameScoreBoard extends React.Component {
         </div>
 
         <div className={styles.subScoreWrapper}>
-          <label>
-            Rounds Won: <span>{this.props.gameState.roundsWon}</span>
-          </label>
-          <label>
-            Rounds Lost: <span>{this.props.gameState.roundsLost}</span> / {this.props.gameState.lossLimit}
-          </label>
-          <label>
-            Multipliers Won: <span>{this.props.gameState.multipliers}</span>
-          </label>
+          <ScoreboardRoundLabel label="Rounds Won" firstValue={this.props.gameState.roundsWon} />
+          <ScoreboardRoundLabel label="Multipliers Won" firstValue={this.props.gameState.multipliers} />
+          <ScoreboardRoundLabel
+            label="Rounds Lost"
+            firstValue={this.props.gameState.roundsLost}
+            secondValue={this.props.gameState.lossLimit}
+          />
         </div>
       </div>
     );

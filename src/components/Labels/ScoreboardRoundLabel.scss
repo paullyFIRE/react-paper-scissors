@@ -1,19 +1,24 @@
 @import "../../global-styles.scss";
 
 .labelWrapper {
-  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
   border: 2px solid black;
   border-radius: 6%;
   padding-left: 10px;
   background-color: $headerColor;
   color: white;
+  font-size: 24px;
 
   & span {
+    display: flex;
+    justify-content: center;
     background-color: orange;
     border: 2px solid orange;
     border-radius: 10%;
     padding: 7px;
-    margin-right: 5px;
     margin-left: 10px;
     color: black;
   }
