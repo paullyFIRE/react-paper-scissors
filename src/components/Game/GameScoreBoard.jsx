@@ -9,26 +9,43 @@ class GameScoreBoard extends React.Component {
   render(props) {
     return (
       <div className={styles.wrapper}>
-        <div className={styles.roundWrapper}>
-          <ScoreboardRoundLabel label="Wins" firstValue={this.props.gameState.pointsPlayer} secondValue={this.props.gameState.roundLimit} />
-          <ScoreboardRoundLabel label="Draws" firstValue={this.props.gameState.pointsDraw} />
-          <ScoreboardRoundLabel label="Losses" firstValue={this.props.gameState.pointsCPU} secondValue={this.props.gameState.roundLimit} />
-        </div>
+        <div className={styles.sectionWrapper}>
+          <div className={styles.scoreWrapper}>
+            <label>
+              Score: <span>{this.props.gameState.score}</span>
+            </label>
+          </div>
 
-        <div className={styles.scoreWrapper}>
-          <label>
-            Score: <span>{this.props.gameState.score}</span>
-          </label>
-        </div>
+          <div className={styles.subScoreWrapper}>
+            <ScoreboardRoundLabel label="Rounds Won" firstValue={this.props.gameState.roundsWon} />
+            <ScoreboardRoundLabel
+              label="Rounds Lost"
+              firstValue={this.props.gameState.roundsLost}
+              secondValue={this.props.gameState.lossLimit}
+            />
+            <ScoreboardRoundLabel label="Multipliers Won" firstValue={this.props.gameState.multipliers} />
+          </div>
 
-        <div className={styles.subScoreWrapper}>
-          <ScoreboardRoundLabel label="Rounds Won" firstValue={this.props.gameState.roundsWon} />
-          <ScoreboardRoundLabel label="Multipliers Won" firstValue={this.props.gameState.multipliers} />
-          <ScoreboardRoundLabel
-            label="Rounds Lost"
-            firstValue={this.props.gameState.roundsLost}
-            secondValue={this.props.gameState.lossLimit}
-          />
+          <div className={styles.roundWrapper}>
+            <div className={styles.sectionWrapper}>
+              <div>
+                <label>Current Round</label>
+              </div>
+              <div>
+                <ScoreboardRoundLabel
+                  label="Wins"
+                  firstValue={this.props.gameState.pointsPlayer}
+                  secondValue={this.props.gameState.roundLimit}
+                />
+                <ScoreboardRoundLabel
+                  label="Losses"
+                  firstValue={this.props.gameState.pointsCPU}
+                  secondValue={this.props.gameState.roundLimit}
+                />
+                <ScoreboardRoundLabel label="Draws" firstValue={this.props.gameState.pointsDraw} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

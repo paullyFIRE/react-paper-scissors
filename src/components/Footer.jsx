@@ -14,7 +14,7 @@ const Footer = () => {
       }}
     >
       <Link to="/about">
-        <p style={{ color: 'white', fontSize: '20px' }}>Created by Paul</p>
+        <p style={{ color: 'white', fontSize: '1.5rem' }}>Created by Paul</p>
       </Link>
     </div>
   );

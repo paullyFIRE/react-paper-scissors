@@ -14,9 +14,9 @@ class GameRegion extends React.Component {
       <Layout>
         <div className={styles.wrapper}>
           <GameHeaderControls />
-          <div className={`${styles.statusHeading} bg-primary`}>
+          {/* <div className={`${styles.statusHeading} bg-primary`}>
             <h2>{this.props.gameState.statusText}</h2>
-          </div>
+          </div> */}
 
           <div className={styles.mainScoreWrapper}>
             <GameScoreBoard />

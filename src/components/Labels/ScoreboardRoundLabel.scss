@@ -2,33 +2,26 @@
 
 .labelWrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  border: 2px solid black;
-  border-radius: 6%;
-  padding-left: 10px;
+  border: 3px solid $headerColor;
   background-color: $headerColor;
+  border-radius: 5px;
+  padding-left: 10px;
   color: white;
-  font-size: 24px;
+  width: auto;
+  font-size: 1.8rem;
 
   & span {
     display: flex;
     justify-content: center;
+    width: 3em;
     background-color: orange;
     border: 2px solid orange;
     border-radius: 10%;
-    padding: 7px;
+    padding: 0 5px;
     margin-left: 10px;
-    color: black;
-  }
-}
-
-.labelWrapper:hover {
-  border: 2px solid orange;
-  transition: border 250ms;
-
-  & span {
     color: black;
   }
 }

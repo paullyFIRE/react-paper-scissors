@@ -8,16 +8,14 @@
   line-height: 1.3em;
 }
 
-.mainScoreWrapper {
-  // border: 1px solid grey;
-}
-
 .statusHeading {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: auto;
   margin-bottom: 20px;
   border-radius: 10px;
+  width: 850px;
 
   & h2 {
     margin: 10px 0;
