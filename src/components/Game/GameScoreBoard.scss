@@ -24,14 +24,14 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  margin: 0.5rem auto;
+  margin: 1rem auto;
   font-size: 4rem;
 
   & label {
     margin: auto;
 
     & span {
-      color:green;
+      color: green;
     }
   }
 }
@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding-top: 1rem;
+  padding-top: 2rem;
 
   & > label {
     margin: auto 2%;
@@ -61,6 +61,7 @@
 
   & .sectionWrapper {
     width: 65%;
+    border: none;
   }
 
   & div:nth-child(1) {
@@ -80,7 +81,7 @@
     & > label {
       margin: auto 2%;
     }
-  
+
     & label:nth-child(2) {
       & span {
         color: red;

@@ -18,18 +18,6 @@ const api = store => next => action => {
         store.dispatch({
           type: 'DATA_RECEIVED',
           name: config.modals.leaderboard.storeName,
-          type: 'DATA_RECEIVED',
-          name: config.modals.games.storeName,
-          data: payload.data
-        });
-      }
-    });
-
-    fetchData(config.modals.leaderboard.apiPath, { method: 'GET' }, payload => {
-      if (payload.success == 1) {
-        store.dispatch({
-          type: 'DATA_RECEIVED',
-          name: config.modals.leaderboard.storeName,
           data: payload.data
         });
       }

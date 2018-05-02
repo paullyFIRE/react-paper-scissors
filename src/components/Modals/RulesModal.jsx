@@ -29,7 +29,7 @@ class RulesModal extends React.Component {
             <li>E.g. if you win 5-3, you&apos;ll be awarded an extra 2000 points for the lead!</li>
           </ul>
           <p>After winning a round, you&apos;ll be able to play a best-of-1 round to double your score!</p>
-          <p>After losing 3 rounds to the AI, the game will be over and you&apos;ll be able to submit your high score.</p>
+          <p>After losing 3 rounds to the computer, the game will be over and you&apos;ll be able to submit your high score.</p>
           <p>You&apos;ll be able to submit your score at any time, but then all of your progress will be reset.</p>
           <p>Good luck, and see you on the leaderboard!</p>
         </div>

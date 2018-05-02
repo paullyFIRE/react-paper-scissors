@@ -12,7 +12,6 @@ let random = seed => {
 const defaultState = {
   game: {
     state: 'STANDARD_ROUND',
-    statusText: 'Hit a Button to Begin!',
     score: 0,
     roundsWon: 0,
     roundsLost: 0,

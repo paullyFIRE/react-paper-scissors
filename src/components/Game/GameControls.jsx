@@ -12,8 +12,7 @@ class GameControls extends React.Component {
       <div
         style={{
           display: 'flex',
-          justifyContent: 'space-around',
-          paddingTop: '20px'
+          justifyContent: 'space-around'
         }}
       >
         <GameActionButton value="rock" eventHandler={this.props.beginDuel} src={rockSvg} />

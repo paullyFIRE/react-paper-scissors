@@ -5,9 +5,12 @@ const Footer = () => {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        position: 'fixed',
+        bottom: '0',
+        left: '0',
+        width: '100%',
+        height: '4vh',
+        textAlign: 'center',
         paddingTop: '5px',
         borderTop: '1px black solid',
         backgroundColor: '#2980b9'

@@ -13,18 +13,17 @@ class GameRegion extends React.Component {
     return (
       <Layout>
         <div className={styles.wrapper}>
-          <GameHeaderControls />
-          {/* <div className={`${styles.statusHeading} bg-primary`}>
-            <h2>{this.props.gameState.statusText}</h2>
-          </div> */}
+          <div>
+            <GameHeaderControls />
+          </div>
 
           <div className={styles.mainScoreWrapper}>
             <GameScoreBoard />
           </div>
 
-          <GameControls eventHandler={this.gameEventHandler} />
-
-          <div id="round-history" />
+          <div>
+            <GameControls eventHandler={this.gameEventHandler} />
+          </div>
         </div>
       </Layout>
     );
