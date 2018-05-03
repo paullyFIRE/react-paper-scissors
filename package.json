@@ -2,7 +2,7 @@
   "name": "rps-server",
   "version": "1.0.0",
   "description": "RockPaperScissors API Server",
-  "main": "server.js",
+  "main": "/server/server.js",
   "scripts": {
     "prebuild": "shx rm -rf dist/*",
     "build": "parcel build src/index.html",
@@ -38,8 +38,5 @@
     "redux": "^3.7.2",
     "shx": "^0.2.2"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+  "browserslist": ["> 1%", "last 2 versions"]
 }

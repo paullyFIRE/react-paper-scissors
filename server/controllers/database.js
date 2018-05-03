@@ -1,14 +1,10 @@
 const mysql = require('mysql');
 const queries = require('./database-queries');
+const config = require('../config').database;
 
 class Database {
   constructor() {
-    this.pool = mysql.createPool({
-      host: '35.184.253.121',
-      user: 'root',
-      password: 'Dawg0847178971@#$',
-      database: 'rpc'
-    });
+    this.pool = mysql.createPool(config);
   }
 
   postGame(game) {

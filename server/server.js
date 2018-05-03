@@ -7,7 +7,7 @@ const path = require('path');
 const port = 80;
 
 const app = express();
-const serveDirectory = '/dist/';
+const serveDirectory = '/../dist/';
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname + serveDirectory)));
