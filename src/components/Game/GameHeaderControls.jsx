@@ -16,9 +16,9 @@ class GameHeaderControls extends React.Component {
     return (
       <div
         style={{
+          alignItems: 'center',
           display: 'flex',
           justifyContent: 'space-around',
-          alignItems: 'center',
           maxWidth: '650px',
           margin: '15px auto'
         }}

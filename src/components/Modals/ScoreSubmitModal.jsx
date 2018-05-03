@@ -110,7 +110,7 @@ class ScoreSubmitModal extends React.Component {
             <h4>{this.state.statusText}</h4>
           </div>
 
-          <GameScoreBoard />
+          <GameScoreBoard displayMode="game-only" />
 
           <div className={styles.formWrapper}>
             <label>Enter Your Alias Here:</label>

@@ -1,7 +1,8 @@
 const api = (state = {}, action) => {
   if (action.type == 'DATA_RECEIVED') {
-    let data = {};
+    let data = Object.create(null);
     data[action.name] = action.data;
+
     return Object.assign({}, state, data);
   } else if (action.type == 'POST_GAME') {
     return Object.assign({}, state, {

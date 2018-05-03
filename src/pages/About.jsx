@@ -6,9 +6,13 @@ class About extends React.Component {
     return (
       <div>
         <Layout>
-          <div style={{ margin: '0 auto', width: '650px' }}>
+          <div style={{ margin: '0 auto', width: '80%' }}>
             <div className="lead" style={{ paddingTop: '40px' }}>
-              <p>This is an intermediate implementation of Rock Paper Scissors using ReactJS and Redux.</p>
+              <p>This is an implementation of Rock Paper Scissors using ReactJS and Redux.</p>
+              <p>
+                This project grew quite steadily in size and complexity as it developed. Making a game that is engaging, aesthetically
+                pleasing, and most-importantly - simple - can be challenging.
+              </p>
               <p>The front-end was built with:</p>
               <ul>
                 <li>ReactJS</li>
@@ -42,6 +46,7 @@ class About extends React.Component {
               </p>
             </div>
           </div>
+          <br/>
         </Layout>
       </div>
     );

@@ -6,7 +6,7 @@ import config from '../../config';
 import styles from './GameScoreBoard.scss';
 
 class GameScoreBoard extends React.Component {
-  render(props) {
+  render() {
     return (
       <div className={styles.wrapper}>
         <div className={styles.sectionWrapper}>
@@ -23,11 +23,11 @@ class GameScoreBoard extends React.Component {
               firstValue={this.props.gameState.roundsLost}
               secondValue={this.props.gameState.lossLimit}
             />
-            <ScoreboardRoundLabel label="Multipliers Won" firstValue={this.props.gameState.multipliers} />
+            <ScoreboardRoundLabel label="Multipliers" firstValue={this.props.gameState.multipliers} />
           </div>
 
-          <div className={styles.roundWrapper}>
-            <div className={styles.sectionWrapper}>
+          {this.props.displayMode == 'game-only' ? null : (
+            <div className={styles.roundWrapper}>
               <div>
                 <label>Current Round</label>
               </div>
@@ -45,7 +45,7 @@ class GameScoreBoard extends React.Component {
                 <ScoreboardRoundLabel label="Draws" firstValue={this.props.gameState.pointsDraw} />
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );
@@ -54,7 +54,8 @@ class GameScoreBoard extends React.Component {
 
 GameScoreBoard.propTypes = {
   gameState: PropTypes.object,
-  style: PropTypes.object
+  style: PropTypes.object,
+  displayMode: PropTypes.string
 };
 
 const mapState = state => {

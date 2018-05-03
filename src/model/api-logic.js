@@ -2,7 +2,6 @@ const fetchData = (path, request, callback) => {
   let domain = process.env.NODE_ENV !== 'production' ? 'http://159.65.21.186/' : '/';
 
   if (request.method == 'GET') {
-    console.log('getting', domain + path);
     fetch(domain + path)
       .then(response => response.json())
       .then(callback)

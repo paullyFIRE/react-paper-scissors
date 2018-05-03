@@ -1,17 +1,3 @@
-export const play = playerChoice => {
-  const computer = generateResponse();
-
-  if (playerChoice !== computer) {
-    if (evaluateWinner(playerChoice, computer)) {
-      return { computer: computer, result: 'WON' };
-    } else {
-      return { computer: computer, result: 'LOST' };
-    }
-  } else {
-    return { computer: computer, result: 'DREW' };
-  }
-};
-
 const evaluateWinner = (playerChoice, computer) => {
   if (playerChoice === 'rock') {
     if (computer === 'paper') {
@@ -44,5 +30,19 @@ const generateResponse = () => {
       return 'paper';
     case 3:
       return 'scissors';
+  }
+};
+
+export const play = playerChoice => {
+  const computer = generateResponse();
+
+  if (playerChoice !== computer) {
+    if (evaluateWinner(playerChoice, computer)) {
+      return { computer: computer, result: 'WON' };
+    } else {
+      return { computer: computer, result: 'LOST' };
+    }
+  } else {
+    return { computer: computer, result: 'DREW' };
   }
 };

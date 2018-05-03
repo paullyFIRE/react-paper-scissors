@@ -1,10 +1,10 @@
 import fetchData from '../model/api-logic';
 import config from '../config';
 
-const api = store => next => action => {
+const apiMW = store => next => action => {
   if (action.type == 'FETCH_DATA') {
     fetchData(config.modals.games.apiPath, { method: 'GET' }, payload => {
-      if (payload.success == 1) {
+      if (payload.success) {
         store.dispatch({
           type: 'DATA_RECEIVED',
           name: config.modals.games.storeName,
@@ -14,7 +14,7 @@ const api = store => next => action => {
     });
 
     fetchData(config.modals.leaderboard.apiPath, { method: 'GET' }, payload => {
-      if (payload.success == 1) {
+      if (payload.success) {
         store.dispatch({
           type: 'DATA_RECEIVED',
           name: config.modals.leaderboard.storeName,
@@ -52,4 +52,4 @@ const api = store => next => action => {
   }
 };
 
-export default api;
+export default apiMW;

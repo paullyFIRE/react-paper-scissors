@@ -1,34 +1,5 @@
 const GameState = (state = {}, action) => {
   switch (action.type) {
-    //GAME SCOREBOARD/STATE
-    case 'MULTIPLIER_WON':
-      return Object.assign({}, state, {
-        multipliers: state.multipliers + 1,
-        score: state.score * 2
-      });
-
-    case 'MULTIPLIER_ROUND_OVER':
-      return Object.assign({}, state, {
-        state: 'STANDARD_ROUND'
-      });
-
-    case 'ROUND_WON':
-      return Object.assign({}, state, {
-        roundsWon: state.roundsWon + 1,
-        state: 'MULTIPLIER_ROUND'
-      });
-
-    case 'ROUND_LOST':
-      return Object.assign({}, state, {
-        roundsLost: state.roundsLost + 1
-      });
-
-    case 'GAME_OVER':
-      return Object.assign({}, state, {
-        roundsLost: state.roundsLost + 1
-      });
-
-    //GAME ROUND CALLS
     case 'POINT_WON':
       let rounds = state.rounds;
       rounds[0].pointsPlayer++;
@@ -55,6 +26,17 @@ const GameState = (state = {}, action) => {
         rounds: rounds
       });
 
+    case 'ROUND_WON':
+      return Object.assign({}, state, {
+        roundsWon: state.roundsWon + 1,
+        state: 'MULTIPLIER_ROUND'
+      });
+
+    case 'ROUND_LOST':
+      return Object.assign({}, state, {
+        roundsLost: state.roundsLost + 1
+      });
+
     case 'NEW_ROUND':
       return Object.assign({}, state, {
         rounds: [
@@ -68,7 +50,22 @@ const GameState = (state = {}, action) => {
         ]
       });
 
-    // Game Control
+    case 'MULTIPLIER_WON':
+      return Object.assign({}, state, {
+        multipliers: state.multipliers + 1,
+        score: state.score * 2
+      });
+
+    case 'MULTIPLIER_ROUND_OVER':
+      return Object.assign({}, state, {
+        state: 'STANDARD_ROUND'
+      });
+
+    case 'GAME_OVER':
+      return Object.assign({}, state, {
+        roundsLost: state.roundsLost + 1
+      });
+
     case 'RESET_GAME':
       return Object.assign(
         {},

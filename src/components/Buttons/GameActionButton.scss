@@ -2,17 +2,17 @@
 
 .gameActionButton[type="button"] {
   background: $actionButtonBackgroundColor;
-  padding: 0;
   border-radius: 8%;
+  padding: 0;
 }
 
 .gameActionButton img {
   background-color: lightgrey;
-  width: 20vw;
+  border-radius: 8%;
   max-width: 250px;
   padding-top: 10px;
-  border-radius: 8%;
   transition: background-color 300ms;
+  width: 20vw;
 }
 
 .standardRound {
