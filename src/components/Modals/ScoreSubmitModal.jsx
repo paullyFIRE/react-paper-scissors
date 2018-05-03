@@ -110,7 +110,11 @@ class ScoreSubmitModal extends React.Component {
             <h4>{this.state.statusText}</h4>
           </div>
 
-          <GameScoreBoard displayMode="game-only" />
+          <div className={styles.scoreWrapper}>
+            <label>
+              Score: <span>{this.props.score}</span>
+            </label>
+          </div>
 
           <div className={styles.formWrapper}>
             <label>Enter Your Alias Here:</label>
@@ -135,12 +139,14 @@ class ScoreSubmitModal extends React.Component {
 
 ScoreSubmitModal.propTypes = {
   postGame: PropTypes.func,
-  postState: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  postState: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  score: PropTypes.number
 };
 
 const mapState = state => {
   return {
-    postState: state.api.postRequests[0] !== undefined && state.api.postRequests[0].status
+    postState: state.api.postRequests[0] !== undefined && state.api.postRequests[0].status,
+    score: state.game.score
   };
 };
 

@@ -1,4 +1,5 @@
 @import "../../global-styles.scss";
+@import "../Game/GameScoreBoard.scss";
 
 .footerWrapper {
   display: flex;
@@ -22,6 +23,11 @@
   color: $submitColorScheme;
   width: auto;
   text-align: center;
+}
+
+.scoreWrapper {
+  @extend .scoreWrapper;
+  padding: 15px 0;
 }
 
 .statusWrapper {
