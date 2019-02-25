@@ -7,7 +7,7 @@ This is an implementation of Rock Paper Scissors using ReactJS and Redux, my fir
 This project grew quite steadily in size and complexity as it developed, leaping from one creative idea to the next.
 Making a game that is engaging, aesthetically pleasing, and most-importantly - simple - can be challenging.
 
-[![](react-paper-scissors.gif)](https://media.giphy.com/media/iOdYJijQrY0B9M9opx/giphy.gif)
+![](example.gif)
 
 ### What did I learn?
 
