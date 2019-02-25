@@ -7,6 +7,8 @@ This is an implementation of Rock Paper Scissors using ReactJS and Redux, my fir
 This project grew quite steadily in size and complexity as it developed, leaping from one creative idea to the next.
 Making a game that is engaging, aesthetically pleasing, and most-importantly - simple - can be challenging.
 
+[![](react-paper-scissors.gif)](https://media.giphy.com/media/iOdYJijQrY0B9M9opx/giphy.gif)
+
 ### What did I learn?
 
 There are many things to consider when building an experience, such as: user journeys, game mechanics, players&#39; response to respective mechanics (in a meta-game sort of way). Not to mention the interesting idea of how to best rewarding and punishing a player, and have them emotionally invest in the game. Very cool thought provoking stuff.
